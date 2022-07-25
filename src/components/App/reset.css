@@ -1,0 +1,58 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+}
+
+html, body {
+   height: 100%;
+}
+
+/* Remove list styles on ul, ol elements with a `list` role, which suggests default styling will be removed */
+ol[role='list'], 
+ul[role='list'] {
+   list-style: none;
+}
+
+body {
+   line-height: 1.5;
+   text-rendering: optimizeSpeed;
+   -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+   overflow-wrap: break-word;
+}
+
+small {font-size: 85%;}
+strong {font-weight: bold;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {
+   cursor: pointer;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
