@@ -30,7 +30,8 @@ const GlobalStyles = createGlobalStyle`
       --fs-body: var(--fs-400);
       --fs-nav: var(--fs-500);
 
-      --spacing: 0.1rem;
+      --spacing-sm: 0.1rem;
+      --spacing-md: 0.2rem;
       --radius: 0.25rem;
 
       --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -46,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
    }
 
    h1, h2, h3, h4 {
-      letter-spacing: var(--spacing);
+      letter-spacing: var(--spacing-sm);
       line-height: 1.25;
       margin-bottom: 0.75rem;
    }
