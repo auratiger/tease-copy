@@ -80,7 +80,7 @@ const Hero = () => {
    );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
    width: 100%;
    height: 40rem;
    position: relative;
