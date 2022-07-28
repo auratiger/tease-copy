@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { flex } from "@mixins/mixins";
 import links from "@constants/data/links";
 import { Link } from "gatsby";
 
@@ -32,11 +33,11 @@ const Navbar = () => {
 };
 
 const Wrapper = styled.nav`
-   width: 100%;
+   max-width: 1500px;
    height: 2rem;
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
+   margin: auto;
+   padding-top: 2.5rem;
+   ${flex()}
    gap: 1rem;
 
    .navigation-links {
@@ -46,7 +47,7 @@ const Wrapper = styled.nav`
 
    .navigation-links a {
       text-decoration: none;
-      color: black;
+      color: inherit;
       text-transform: capitalize;
    }
 

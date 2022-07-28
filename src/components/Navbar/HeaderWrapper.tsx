@@ -12,8 +12,12 @@ const HeaderWrapper = () => {
 };
 
 const Wrapper = styled.header`
-   padding-inline: 5rem;
+   width: 100%;
    margin-inline: auto;
+   padding: 0 40px;
+   z-index: 28;
+   position: fixed;
+   color: white;
 `;
 
 export default HeaderWrapper;

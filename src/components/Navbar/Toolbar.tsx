@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { flex } from "@mixins/mixins";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import { FiInstagram } from "@react-icons/all-files/fi/FiInstagram";
 import { FaPinterest } from "@react-icons/all-files/fa/FaPinterest";
@@ -17,11 +18,10 @@ const Toolbar = () => {
 };
 
 const Wrapper = styled.section`
-   width: 100%;
+   max-width: 1500px;
    height: 2rem;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
+   margin: auto;
+   ${flex({ justify: "flex-end" })}
    gap: 0.5rem;
 
    border-bottom: 1px solid gray;

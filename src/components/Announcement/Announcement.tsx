@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
+import { flex } from "@mixins/mixins";
 import useInterval from "@hooks/useInterval";
 
 interface AnnouncementProps {
@@ -107,9 +108,7 @@ const Wrapper = styled.section`
    width: 100%;
    height: 2.5rem;
 
-   /* TODO: Maybe create a mixin for flex, where I can pass three parameters for alignment */
    display: flex;
-   justify-content: flex-start;
    scroll-snap-type: x mandatory;
    scroll-behavior: smooth;
    overflow-x: scroll;
@@ -132,10 +131,8 @@ const Wrapper = styled.section`
       width: 100%;
       height: 100%;
       flex: none;
-      display: flex;
-      justify-content: center;
+      ${flex()}
       gap: 0.5rem;
-      align-items: center;
       scroll-snap-align: start;
 
       /* TODO: Create mixing for this property */
