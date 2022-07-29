@@ -12,9 +12,9 @@ const Navbar = () => {
    const linkItems = () => {
       return links.map((link: any, index: number) => {
          return (
-            <Link key={index} to={link.url}>
-               {link.text}
-            </Link>
+            <li key={index}>
+               <Link to={link.url}>{link.text}</Link>
+            </li>
          );
       });
    };
@@ -22,7 +22,9 @@ const Navbar = () => {
    return (
       <Wrapper>
          <span>Logo</span>
-         <section className="navigation-links">{linkItems()}</section>
+         <ul role={"list"} className="navigation-links">
+            {linkItems()}
+         </ul>
          <section className="icons-group">
             <FaRegUser size={24} />
             <BsSearch size={24} />

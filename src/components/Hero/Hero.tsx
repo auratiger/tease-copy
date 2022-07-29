@@ -84,18 +84,23 @@ const Wrapper = styled.article`
    width: 100%;
    height: 40rem;
    position: relative;
+   overflow-x: hidden;
    ${flex()};
 
    .slideshow {
       display: flex;
       width: 100%;
       height: 100%;
-      /* overflow-x: scroll; */
       /* transform: translateX(-50%); */
+      position: absolute;
+      left: 0;
       cursor: pointer;
    }
 
    .slideshow section {
+      /* max-width: 1500px; */
+      /* margin: auto; */
+      /* padding-top: 2.5rem; */
       width: 100%;
       height: 100%;
       flex: none;

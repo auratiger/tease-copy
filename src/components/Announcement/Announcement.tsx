@@ -147,6 +147,7 @@ const Wrapper = styled.section`
 
    .description {
       font-size: var(--fs-300);
+      text-decoration: underline;
    }
 `;
 

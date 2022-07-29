@@ -1,4 +1,6 @@
 import * as React from "react";
+import styled from "styled-components";
+import { flex } from "@mixins/mixins";
 import { App } from "@components/App";
 import { Announcement } from "@components/Announcement";
 import { HeaderWrapper } from "@components/Navbar";
@@ -10,9 +12,9 @@ const IndexPage = () => {
       <App>
          <Announcement announcements={announcements} />
          <HeaderWrapper />
-         <main>
+         <Wrapper>
             <Hero />
-            <section>
+            <section className="wellness-section">
                <h2>wellness rituals shouldn't be complicated.</h2>
                <p>
                   we're tease. We create all natural, tea + botanical based
@@ -36,9 +38,20 @@ const IndexPage = () => {
                   <section>image</section>
                </div>
             </section>
-         </main>
+         </Wrapper>
       </App>
    );
 };
+
+const Wrapper = styled.main`
+   ${flex({ dir: "column" })};
+   gap: 4rem;
+
+   .wellness-section {
+      width: 30%;
+      ${flex({ dir: "column" })};
+      text-align: center;
+   }
+`;
 
 export default IndexPage;

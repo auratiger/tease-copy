@@ -4,7 +4,7 @@ export const flex = ({
    justify = "center",
    align = "center",
    wrap = "nowrap",
-   direction = "row",
+   dir = "row",
 }: {
    justify?:
       | "flex-start"
@@ -15,7 +15,7 @@ export const flex = ({
       | "space-evenly";
    align?: "stretch" | "flex-start" | "flex-end" | "center" | "baseline";
    wrap?: "nowrap" | "wrap" | "wrap-reverse";
-   direction?: "row" | "row-reverse" | "column" | "column-reverse";
+   dir?: "row" | "row-reverse" | "column" | "column-reverse";
 } = {}) => css`
    display: -webkit-box;
    display: -moz-box;
@@ -23,7 +23,7 @@ export const flex = ({
    display: -webkit-flex;
    display: flex;
 
-   flex-direction: ${direction};
+   flex-direction: ${dir};
    justify-content: ${justify};
    align-items: ${align};
    flex-wrap: ${wrap};
