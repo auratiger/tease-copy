@@ -1,154 +1,148 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from "react";
-import styled from "styled-components";
-import { flex } from "@mixins/mixins";
-import useInterval from "@hooks/useInterval";
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
+import styled from 'styled-components';
+import { flex, hideScroll } from '@mixins/mixins';
+import useInterval from '@hooks/useInterval';
 
 interface AnnouncementProps {
-   title: string;
-   description: string;
+  title: string;
+  description: string;
 }
 
 export interface Props {
-   announcements: Array<AnnouncementProps>;
+  announcements: Array<AnnouncementProps>;
 }
 
 const Announcement: FC<Props> = ({ announcements }) => {
-   const scrollReff = useRef<HTMLElement>(null);
-   const [isDown, setIsDown] = useState<boolean>(false);
-   const [startX, setStartX] = useState<number>(0);
-   const [move, setMove] = useState<number>(0);
+  const scrollRef = useRef<HTMLElement>(null);
+  const [isDown, setIsDown] = useState<boolean>(false);
+  const [startX, setStartX] = useState<number>(0);
+  const [move, setMove] = useState<number>(0);
 
-   useEffect(() => {
-      if (scrollReff.current) {
-         setMove(scrollReff.current.scrollWidth / announcements.length);
+  useEffect(() => {
+    if (scrollRef.current) {
+      setMove(scrollRef.current.scrollWidth / announcements.length);
+    }
+  }, [announcements]);
+
+  useInterval(
+    () => {
+      if (scrollRef.current) {
+        let moveTo: number = scrollRef.current.scrollLeft + move;
+        if (moveTo + 1 >= scrollRef.current.scrollWidth) {
+          moveTo = 0;
+        }
+        scrollRef.current.scrollLeft = moveTo;
       }
-   }, [announcements]);
+    },
+    isDown ? null : 5000
+  );
 
-   useInterval(
-      () => {
-         if (scrollReff.current) {
-            let moveTo: number = scrollReff.current.scrollLeft + move;
-            if (moveTo + 1 >= scrollReff.current.scrollWidth) {
-               moveTo = 0;
-            }
-            scrollReff.current.scrollLeft = moveTo;
-         }
-      },
-      isDown ? null : 5000
-   );
+  const onMouseDown = (e: any): void => {
+    e.persist();
+    setIsDown(true);
 
-   const onMouseDown = (e: any): void => {
-      e.persist();
-      setIsDown(true);
+    if (scrollRef.current) {
+      setStartX(e.pageX - scrollRef.current.offsetLeft);
+      scrollRef.current.style.cursor = 'grabbing';
+    }
+  };
 
-      if (scrollReff.current) {
-         setStartX(e.pageX - scrollReff.current.offsetLeft);
-         scrollReff.current.style.cursor = "grabbing";
-      }
-   };
+  const onMouseUp = (): void => {
+    setIsDown(false);
 
-   const onMouseUp = (): void => {
-      setIsDown(false);
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = 'grab';
+    }
+  };
 
-      if (scrollReff.current) {
-         scrollReff.current.style.cursor = "grab";
-      }
-   };
+  const onMouseMove = (e: React.MouseEvent<HTMLElement>): void => {
+    e.preventDefault();
 
-   const onMouseMove = (e: React.MouseEvent<HTMLElement>): void => {
-      e.preventDefault();
+    if (!isDown) return;
 
-      if (!isDown) return;
+    if (scrollRef.current) {
+      const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
 
-      if (scrollReff.current) {
-         const { offsetLeft, scrollWidth, scrollLeft } = scrollReff.current;
+      const x: number = e.pageX - offsetLeft;
+      const tolerance: number = 20;
 
-         const x: number = e.pageX - offsetLeft;
-         const tolerance: number = 20;
+      let moveTo: number =
+        scrollLeft + tolerance + move * Math.sign(startX - x);
 
-         let moveTo: number =
-            scrollLeft + tolerance + move * Math.sign(startX - x);
+      if (moveTo >= scrollWidth) moveTo = 0;
+      else if (moveTo < 0) moveTo = scrollWidth;
 
-         if (moveTo >= scrollWidth) moveTo = 0;
-         else if (moveTo < 0) moveTo = scrollWidth;
+      scrollRef.current.scrollLeft = moveTo;
+    }
+  };
 
-         scrollReff.current.scrollLeft = moveTo;
-      }
-   };
+  const announcementItems = useMemo(() => {
+    return announcements.map((announcement, index) => {
+      return (
+        <section key={index}>
+          <strong className="title">{announcement.title}</strong>
+          {announcement.description && (
+            <span className="description">{announcement.description}</span>
+          )}
+        </section>
+      );
+    });
+  }, [announcements]);
 
-   const announcementItems = useMemo(() => {
-      return announcements.map((announcement, index) => {
-         return (
-            <section key={index}>
-               <strong className="title">{announcement.title}</strong>
-               {announcement.description && (
-                  <span className="description">
-                     {announcement.description}
-                  </span>
-               )}
-            </section>
-         );
-      });
-   }, [announcements]);
-
-   return (
-      <Wrapper
-         onMouseDown={onMouseDown}
-         onMouseUp={onMouseUp}
-         onMouseLeave={onMouseUp}
-         onMouseMove={onMouseMove}
-         ref={scrollReff}
-      >
-         {announcementItems}
-      </Wrapper>
-   );
+  return (
+    <Wrapper
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      onMouseMove={onMouseMove}
+      ref={scrollRef}
+    >
+      {announcementItems}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
-   width: 100%;
-   height: 2.5rem;
+  width: 100%;
+  height: 2.5rem;
 
-   display: flex;
-   scroll-snap-type: x mandatory;
-   scroll-behavior: smooth;
-   overflow-x: scroll;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
 
-   cursor: grab;
+  cursor: grab;
 
-   background: var(--bluishGreen-100);
+  background: var(--bluishGreen-100);
 
-   color: var(--bluishGreen-300);
-   font-size: var(--fs-400);
-   letter-spacing: var(--spacing-md);
+  color: var(--bluishGreen-300);
+  font-size: var(--fs-400);
+  letter-spacing: var(--spacing-md);
 
-   /* For removing the scrollbar from view */
-   scrollbar-width: none;
-   ::-webkit-scrollbar {
-      display: none;
-   }
+  ${hideScroll}
 
-   section {
-      width: 100%;
-      height: 100%;
-      flex: none;
-      ${flex()}
-      gap: 0.5rem;
-      scroll-snap-align: start;
+  section {
+    width: 100%;
+    height: 100%;
+    flex: none;
+    ${flex()}
+    gap: 0.5rem;
+    scroll-snap-align: start;
 
-      /* TODO: Create mixing for this property */
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-   }
+    /* TODO: Create mixing for this property */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-   .title {
-      text-transform: uppercase;
-   }
+  .title {
+    text-transform: uppercase;
+  }
 
-   .description {
-      font-size: var(--fs-300);
-      text-decoration: underline;
-   }
+  .description {
+    font-size: var(--fs-300);
+    text-decoration: underline;
+  }
 `;
 
 export default Announcement;

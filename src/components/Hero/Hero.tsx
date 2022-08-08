@@ -1,27 +1,26 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { flex } from '@mixins/mixins';
+import { flex, hideScroll } from '@mixins/mixins';
 import { slideshowItems } from '@constants/data/hero-slideshow';
 import { StaticImage } from 'gatsby-plugin-image';
+import { useEffect } from 'react';
 
 const Hero = () => {
   const scrollRef = useRef<HTMLElement>(null);
   const [startX, setStartX] = useState<number>(0);
   const [isDown, setIsDown] = useState<boolean>(false);
+  const [move, setMove] = useState<number>(0);
   const [translateX, setTranslateX] = useState<number>(0);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      setMove(scrollRef.current.scrollWidth / slideshowItems.length);
+    }
+  }, [scrollRef]);
 
   const showItems = () => {
     return slideshowItems.map((item: any, index: number) => {
-      return (
-        <section key={index} style={{ background: item.color }}>
-          {/* <StaticImage
-            src="../../assets/images/teacups.jpg"
-            alt="cups"
-            width={400}
-            height={400}
-          /> */}
-        </section>
-      );
+      return <section key={index} style={{ background: item.color }}></section>;
     });
   };
 
@@ -29,7 +28,7 @@ const Hero = () => {
     return slideshowItems.map((_: any, index: number) => {
       return (
         <section className="timeline-box" key={index}>
-          <div className="background"></div>
+          <div className={`background ${index === 0 && 'active'}`}></div>
         </section>
       );
     });
@@ -40,34 +39,30 @@ const Hero = () => {
     setIsDown(true);
 
     if (scrollRef.current) {
-      // setStartX(e.pageX - scrollRef.current.offsetLeft);
+      setStartX(e.pageX - scrollRef.current.offsetLeft);
       scrollRef.current.style.cursor = 'grabbing';
     }
   };
 
-  const onMouseUp = (): void => {
-    setIsDown(false);
+  const onMouseUp = (e: any): void => {
+    if (!isDown) return;
 
     if (scrollRef.current) {
       scrollRef.current.style.cursor = 'grab';
+
+      const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
+
+      const x: number = e.pageX - offsetLeft;
+
+      let moveTo: number = scrollLeft + move * Math.sign(startX - x);
+
+      if (moveTo >= scrollWidth) moveTo = 0;
+      else if (moveTo < 0) moveTo = scrollWidth;
+
+      scrollRef.current.scrollLeft = moveTo;
     }
-  };
 
-  const onMouseMove = (e: React.MouseEvent<HTMLElement>): void => {
-    e.preventDefault();
-
-    if (!isDown) return;
-
-    //  if (scrollRef.current) {
-    //    const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
-    //    const x: number = e.pageX - offsetLeft;
-    //    // const tolerance: number = 20;
-    //    // let moveTo: number = scrollLeft + tolerance * Math.sign(startX - x);
-    //    // if (moveTo >= scrollWidth) moveTo = 0;
-    //    // else if (moveTo < 0) moveTo = scrollWidth;
-    //    // scrollRef.current.scrollLeft = moveTo;
-    //    setTranslateX((prev) => prev + (x - startX));
-    //  }
+    setIsDown(false);
   };
 
   return (
@@ -78,7 +73,6 @@ const Hero = () => {
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseUp}
-        onMouseMove={onMouseMove}
         style={{ transform: `translateX(${translateX}px)` }}
       >
         {showItems()}
@@ -97,17 +91,20 @@ const TimelineContainer = styled.div`
   .timeline-box {
     width: 8rem;
     height: 0.5rem;
-    background: lightgray;
+    background: rgb(219, 200, 184);
   }
 
   .background {
     height: 100%;
     width: 0%;
-    background: red;
-    animation-name: loader;
+    background: rgb(232, 230, 227);
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+  }
+
+  .background.active {
+    animation-name: loader;
   }
 
   @keyframes loader {
@@ -136,6 +133,8 @@ const Wrapper = styled.article`
     position: absolute;
     left: 0;
     cursor: pointer;
+    overflow-x: hidden;
+    ${hideScroll}
   }
 
   .slideshow section {
