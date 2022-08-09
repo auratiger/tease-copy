@@ -4,19 +4,40 @@ import { flex, hideScroll } from '@mixins/mixins';
 import { slideshowItems } from '@constants/data/hero-slideshow';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useEffect } from 'react';
+import useInterval from '@hooks/useInterval';
+
+const tolerance: number = 150;
+const nextSlideDelay: number = 10000;
 
 const Hero = () => {
   const scrollRef = useRef<HTMLElement>(null);
   const [startX, setStartX] = useState<number>(0);
   const [isDown, setIsDown] = useState<boolean>(false);
   const [move, setMove] = useState<number>(0);
-  const [translateX, setTranslateX] = useState<number>(0);
+  const [slideIndex, setSlideIndex] = useState<number>(0);
 
   useEffect(() => {
     if (scrollRef.current) {
       setMove(scrollRef.current.scrollWidth / slideshowItems.length);
     }
   }, [scrollRef]);
+
+  useInterval(
+    () => {
+      if (scrollRef.current) {
+        const { scrollWidth, scrollLeft } = scrollRef.current;
+        let moveTo: number = scrollLeft + move;
+
+        if (moveTo >= scrollWidth) moveTo = 0;
+        else if (moveTo < 0) moveTo = scrollWidth;
+
+        scrollRef.current.scrollLeft = moveTo;
+
+        setSlideIndex((prev: number) => (prev + 1) % slideshowItems.length);
+      }
+    },
+    isDown ? null : nextSlideDelay
+  );
 
   const showItems = () => {
     return slideshowItems.map((item: any, index: number) => {
@@ -28,7 +49,9 @@ const Hero = () => {
     return slideshowItems.map((_: any, index: number) => {
       return (
         <section className="timeline-box" key={index}>
-          <div className={`background ${index === 0 && 'active'}`}></div>
+          <div
+            className={`background ${index === slideIndex && 'active'}`}
+          ></div>
         </section>
       );
     });
@@ -47,21 +70,31 @@ const Hero = () => {
   const onMouseUp = (e: any): void => {
     if (!isDown) return;
 
-    if (scrollRef.current) {
-      scrollRef.current.style.cursor = 'grab';
+    if (!scrollRef.current) return;
 
-      const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
+    scrollRef.current.style.cursor = 'grab';
 
-      const x: number = e.pageX - offsetLeft;
+    const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
+    const endX: number = e.pageX - offsetLeft;
+    const distance: number = startX - endX;
 
-      let moveTo: number = scrollLeft + move * Math.sign(startX - x);
+    if (Math.abs(distance) > tolerance) {
+      const xDirection: number = Math.sign(distance);
+      let moveTo: number = scrollLeft + move * xDirection;
+      let newIndex: number = (slideIndex + xDirection) % slideshowItems.length;
 
-      if (moveTo >= scrollWidth) moveTo = 0;
-      else if (moveTo < 0) moveTo = scrollWidth;
+      if (moveTo >= scrollWidth) {
+        moveTo = 0;
+        newIndex = 0;
+      } else if (moveTo < 0) {
+        moveTo = scrollWidth;
+        newIndex = slideshowItems.length - 1;
+      }
 
       scrollRef.current.scrollLeft = moveTo;
-    }
 
+      setSlideIndex(newIndex);
+    }
     setIsDown(false);
   };
 
@@ -73,7 +106,6 @@ const Hero = () => {
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseUp}
-        style={{ transform: `translateX(${translateX}px)` }}
       >
         {showItems()}
       </div>
@@ -98,7 +130,7 @@ const TimelineContainer = styled.div`
     height: 100%;
     width: 0%;
     background: rgb(232, 230, 227);
-    animation-duration: 4s;
+    animation-duration: ${nextSlideDelay}ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
@@ -111,7 +143,6 @@ const TimelineContainer = styled.div`
     0% {
       width: 0%;
     }
-    80%,
     100% {
       width: 100%;
     }
@@ -129,18 +160,12 @@ const Wrapper = styled.article`
     display: flex;
     width: 100%;
     height: 100%;
-    /* transform: translateX(-50%); */
-    position: absolute;
-    left: 0;
     cursor: pointer;
     overflow-x: hidden;
     ${hideScroll}
   }
 
   .slideshow section {
-    /* max-width: 1500px; */
-    /* margin: auto; */
-    /* padding-top: 2.5rem; */
     width: 100%;
     height: 100%;
     flex: none;
