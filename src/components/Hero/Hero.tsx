@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { flex, hideScroll } from '@mixins/mixins';
 import { slideshowItems } from '@constants/data/hero-slideshow';
-import { StaticImage } from 'gatsby-plugin-image';
 import { useEffect } from 'react';
 import useInterval from '@hooks/useInterval';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const tolerance: number = 150;
 const nextSlideDelay: number = 10000;
@@ -15,6 +16,10 @@ const Hero = () => {
   const [isDown, setIsDown] = useState<boolean>(false);
   const [move, setMove] = useState<number>(0);
   const [slideIndex, setSlideIndex] = useState<number>(0);
+
+  const {
+    allFile: { edges },
+  } = useStaticQuery(query);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -29,34 +34,15 @@ const Hero = () => {
         let moveTo: number = scrollLeft + move;
 
         if (moveTo >= scrollWidth) moveTo = 0;
-        else if (moveTo < 0) moveTo = scrollWidth;
 
         scrollRef.current.scrollLeft = moveTo;
-
         setSlideIndex((prev: number) => (prev + 1) % slideshowItems.length);
       }
     },
     isDown ? null : nextSlideDelay
   );
 
-  const showItems = () => {
-    return slideshowItems.map((item: any, index: number) => {
-      return <section key={index} style={{ background: item.color }}></section>;
-    });
-  };
-
-  const timelineBoxes = () => {
-    return slideshowItems.map((_: any, index: number) => {
-      return (
-        <section className="timeline-box" key={index}>
-          <div
-            className={`background ${index === slideIndex && 'active'}`}
-          ></div>
-        </section>
-      );
-    });
-  };
-
+  // events
   const onMouseDown = (e: any): void => {
     e.persist();
     setIsDown(true);
@@ -76,7 +62,7 @@ const Hero = () => {
 
     const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
     const endX: number = e.pageX - offsetLeft;
-    const distance: number = startX - endX;
+    const distance: number = startX - endX; // distance from start to finish
 
     if (Math.abs(distance) > tolerance) {
       const xDirection: number = Math.sign(distance);
@@ -92,10 +78,34 @@ const Hero = () => {
       }
 
       scrollRef.current.scrollLeft = moveTo;
-
       setSlideIndex(newIndex);
     }
     setIsDown(false);
+  };
+
+  // render elements
+  const showItems = () => {
+    return slideshowItems.map((item: any, index: number) => {
+      const image = getImage(edges[index].node);
+
+      return (
+        <section key={index}>
+          <GatsbyImage image={image} className={'hero-image'} alt="hero" />
+        </section>
+      );
+    });
+  };
+
+  const timelineBoxes = () => {
+    return slideshowItems.map((_: any, index: number) => {
+      return (
+        <section className="timeline-box" key={index}>
+          <div
+            className={`background ${index === slideIndex && 'active'}`}
+          ></div>
+        </section>
+      );
+    });
   };
 
   return (
@@ -131,11 +141,11 @@ const TimelineContainer = styled.div`
     width: 0%;
     background: rgb(232, 230, 227);
     animation-duration: ${nextSlideDelay}ms;
-    animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
 
   .background.active {
+    width: 100%;
     animation-name: loader;
   }
 
@@ -161,7 +171,7 @@ const Wrapper = styled.article`
     width: 100%;
     height: 100%;
     cursor: pointer;
-    overflow-x: hidden;
+    overflow: hidden;
     ${hideScroll}
   }
 
@@ -169,6 +179,26 @@ const Wrapper = styled.article`
     width: 100%;
     height: 100%;
     flex: none;
+  }
+
+  .hero-image {
+    pointer-events: none;
+  }
+`;
+
+export const query = graphql`
+  query {
+    allFile(filter: {relativeDirectory: {eq: "hero"}}) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          }
+        }
+      }
+      totalCount
+    }
   }
 `;
 
