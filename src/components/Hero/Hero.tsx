@@ -89,8 +89,13 @@ const Hero = () => {
       const image = getImage(edges[index].node);
 
       return (
-        <section key={index}>
+        <section key={index} className="slide">
           <GatsbyImage image={image} className={'hero-image'} alt="hero" />
+          <div>
+            <h3>{item.description}</h3>
+            <h2>{item.title}</h2>
+          </div>
+          <button>{item.button.text}</button>
         </section>
       );
     });
@@ -175,14 +180,19 @@ const Wrapper = styled.article`
     ${hideScroll}
   }
 
-  .slideshow section {
+  .slide {
     width: 100%;
     height: 100%;
     flex: none;
+    padding: 6rem 3rem;
+    color: white;
   }
 
   .hero-image {
     pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
   }
 `;
 

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { flex, hideScroll } from '@mixins/mixins';
+import { flex, hideScroll, userSelect } from '@mixins/mixins';
 import useInterval from '@hooks/useInterval';
 
 interface AnnouncementProps {
@@ -129,10 +129,7 @@ const Wrapper = styled.section`
     gap: 0.5rem;
     scroll-snap-align: start;
 
-    /* TODO: Create mixing for this property */
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    ${userSelect}
   }
 
   .title {

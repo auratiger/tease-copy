@@ -36,3 +36,9 @@ export const hideScroll = css`
     display: none;
   }
 `;
+
+export const userSelect = css`
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`;
