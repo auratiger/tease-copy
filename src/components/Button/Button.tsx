@@ -14,9 +14,10 @@ const Button: FC<ButtonProps> = ({
   text,
   color = 'primary',
   isOutlined = false,
+  ...other
 }) => {
   return (
-    <ButtonWrapper to={url} color={color} isOutlined={isOutlined}>
+    <ButtonWrapper to={url} color={color} isOutlined={isOutlined} {...other}>
       {text}
     </ButtonWrapper>
   );

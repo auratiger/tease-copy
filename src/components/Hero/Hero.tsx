@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { flex, hideScroll } from '@mixins/mixins';
 import { slideshowItems } from '@constants/data/hero-slideshow';
 import { Button } from '@components/Button';
+import AnimationCascade from '@components/AnimationCascade';
 import { useEffect } from 'react';
 import useInterval from '@hooks/useInterval';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const tolerance: number = 150;
@@ -88,18 +89,16 @@ const Hero = () => {
   const showItems = () => {
     return slideshowItems.map((item: any, index: number) => {
       const image = getImage(edges[index].node);
+      const isActiveSlide: boolean = index === slideIndex;
 
       return (
-        <section
-          key={index}
-          className={`slide ${index === slideIndex && 'active'}`}
-        >
+        <section key={index} className={`slide`}>
           <GatsbyImage image={image} className={'hero-image'} alt="hero" />
-          <div className="title-box">
+          <AnimationCascade active={isActiveSlide} className="title-box">
             <h2>{item.title}</h2>
             <h3>{item.description}</h3>
-          </div>
-          <Button url={item.url} text={item.button.text} />
+            <Button url={item.url} text={item.button.text} />
+          </AnimationCascade>
         </section>
       );
     });
@@ -200,28 +199,8 @@ const Wrapper = styled.article`
     z-index: -1;
   }
 
-  .title-box * {
-    line-height: 0.8;
-  }
-
-  .title-box h2 {
-    text-transform: capitalize;
-  }
-
-  .slide.active .title-box * {
-    animation-duration: 2s;
-    animation-name: slideUp;
-  }
-
-  @keyframes slideUp {
-    0% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  .title-box {
+    ${flex({ dir: 'column', align: 'flex-start' })}
   }
 `;
 
