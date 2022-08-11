@@ -1,28 +1,28 @@
 export const slideshowItems = [
   {
-    title: 'tit',
+    title: 'slide-1',
     description: 'desc',
     prefix: 'prefix',
     button: {
-      text: 'button',
+      text: 'shop',
       url: 'next page',
     },
   },
   {
-    title: 'tit',
+    title: 'slide-2',
     description: 'desc',
     prefix: 'prefix',
     button: {
-      text: 'button',
+      text: 'shop',
       url: 'next page',
     },
   },
   {
-    title: 'tit',
+    title: 'slide-3',
     description: 'desc',
     prefix: 'prefix',
     button: {
-      text: 'button',
+      text: 'shop',
       url: 'next page',
     },
   },

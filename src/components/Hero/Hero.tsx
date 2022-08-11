@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { flex, hideScroll } from '@mixins/mixins';
 import { slideshowItems } from '@constants/data/hero-slideshow';
+import { Button } from '@components/Button';
 import { useEffect } from 'react';
 import useInterval from '@hooks/useInterval';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -89,13 +90,16 @@ const Hero = () => {
       const image = getImage(edges[index].node);
 
       return (
-        <section key={index} className="slide">
+        <section
+          key={index}
+          className={`slide ${index === slideIndex && 'active'}`}
+        >
           <GatsbyImage image={image} className={'hero-image'} alt="hero" />
-          <div>
-            <h3>{item.description}</h3>
+          <div className="title-box">
             <h2>{item.title}</h2>
+            <h3>{item.description}</h3>
           </div>
-          <button>{item.button.text}</button>
+          <Button url={item.url} text={item.button.text} />
         </section>
       );
     });
@@ -184,8 +188,9 @@ const Wrapper = styled.article`
     width: 100%;
     height: 100%;
     flex: none;
-    padding: 6rem 3rem;
+    padding: 8rem 3rem;
     color: white;
+    position: relative;
   }
 
   .hero-image {
@@ -194,11 +199,35 @@ const Wrapper = styled.article`
     inset: 0;
     z-index: -1;
   }
+
+  .title-box * {
+    line-height: 0.8;
+  }
+
+  .title-box h2 {
+    text-transform: capitalize;
+  }
+
+  .slide.active .title-box * {
+    animation-duration: 2s;
+    animation-name: slideUp;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const query = graphql`
   query {
-    allFile(filter: {relativeDirectory: {eq: "hero"}}) {
+    allFile(filter: { relativeDirectory: { eq: "hero" } }) {
       edges {
         node {
           name
