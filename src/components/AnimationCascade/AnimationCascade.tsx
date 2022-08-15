@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface AnimationCascadeProps {
   duration?: number;
+  delay?: number;
   active?: boolean;
   className?: string;
   children: any;
@@ -10,12 +11,12 @@ interface AnimationCascadeProps {
 
 const AnimationCascade: FC<AnimationCascadeProps> = ({
   duration = 2,
+  delay = 1,
   active = true,
   className,
   children,
   ...other
 }) => {
-  const baseDelay: number = 1;
   return (
     <AnimationCascadeWrapper
       duration={duration}
@@ -24,7 +25,7 @@ const AnimationCascade: FC<AnimationCascadeProps> = ({
     >
       {children.map((child, index) => {
         return React.cloneElement(child, {
-          style: { '--delay': `${baseDelay * index}s` },
+          style: { '--delay': `${delay * index}s` },
         });
       })}
     </AnimationCascadeWrapper>
@@ -34,7 +35,7 @@ const AnimationCascade: FC<AnimationCascadeProps> = ({
 const AnimationCascadeWrapper = styled.div`
   --delay: 0s;
 
-  & * {
+  & > * {
     animation-delay: var(--delay);
     animation-duration: ${(props) => props.duration && `${props.duration}s`};
     animation-fill-mode: both;

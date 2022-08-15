@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { flex } from '@mixins/mixins';
 import { App } from '@components/App';
 import { Announcement } from '@components/Announcement';
+import AnimationCascade from '@components/AnimationCascade';
 import { HeaderWrapper } from '@components/Navbar';
 import { Hero } from '@components/Hero';
 import { announcements } from '@constants/data/announcements';
@@ -23,13 +24,39 @@ const IndexPage = () => {
             convenience, sustainability, or impact.
           </p>
         </section>
-        <section style={{ display: 'flex', gap: '2rem' }}>
-          <span>icon</span>
-          <span>icon</span>
-          <span>icon</span>
-          <span>icon</span>
-          <span>icon</span>
-        </section>
+
+        <AnimationCascade
+          as="section"
+          duration={0.5}
+          delay={0.2}
+          style={{ display: 'flex' }}
+        >
+          <StaticImage
+            src="../assets/images/sponsors/Forbes.webp"
+            alt="hello"
+            width={200}
+          />
+          <StaticImage
+            src="../assets/images/sponsors/Forbes.webp"
+            alt="hello"
+            width={200}
+          />
+          <StaticImage
+            src="../assets/images/sponsors/Forbes.webp"
+            alt="hello"
+            width={200}
+          />
+          <StaticImage
+            src="../assets/images/sponsors/Forbes.webp"
+            alt="hello"
+            width={200}
+          />
+          <StaticImage
+            src="../assets/images/sponsors/Forbes.webp"
+            alt="hello"
+            width={200}
+          />
+        </AnimationCascade>
         <section>
           <h2>shop by benefit:</h2>
           <div style={{ display: 'flex', gap: '2rem' }}>
