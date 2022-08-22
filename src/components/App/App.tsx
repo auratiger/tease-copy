@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-import "./reset.css";
-import "./fonts.css";
+import './reset.css';
+import './fonts.css';
 
 const GlobalStyles = createGlobalStyle`
    :root {
@@ -13,8 +13,8 @@ const GlobalStyles = createGlobalStyle`
       --bluishGreen-200: #3ce669;
       --bluishGreen-300: #1d432b;
 
-      --ff-primary: 'Roboto', sans-serif;
-      --ff-secondary: 'Open Sans', sans-serif;
+      --ff-header-primary: 'Playfair Display', sans-serif;
+      --ff-base-primary: 'Nunito', sans-serif;
 
       --ff-heading: var(--ff-primary);
       --ff-body: var(--ff-primary);
@@ -32,6 +32,8 @@ const GlobalStyles = createGlobalStyle`
 
       --spacing-sm: 0.1rem;
       --spacing-md: 0.2rem;
+      --lh-header: 1;
+      --lh-base: 1.6;
       --radius: 0.25rem;
 
       --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -40,15 +42,17 @@ const GlobalStyles = createGlobalStyle`
    }
 
    body {
-      font-family: var(--ff-primary);
-      line-height: 1.5;
+      font-family: var(--ff-base-primary);
+      line-height: var(--lh-base);
       text-rendering: optimizeSpeed;
       -webkit-font-smoothing: antialiased;
    }
 
    h1, h2, h3, h4 {
+      font-family: var(--ff-header-primary);
+      font-weight: 700;
       letter-spacing: var(--spacing-sm);
-      line-height: 1.25;
+      line-height: var(--lh-header);
       margin-bottom: 0.75rem;
    }
 

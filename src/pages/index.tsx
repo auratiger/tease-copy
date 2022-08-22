@@ -209,7 +209,7 @@ const IndexPage = () => {
             </section>
 
             <section
-               style={{ width: '100%', height: '20rem', background: 'green' }}
+               style={{ width: '100%', height: '25rem', background: 'green' }}
             ></section>
          </Wrapper>
       </App>
