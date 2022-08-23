@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { flex, hideScroll } from '@mixins/mixins';
+import { timelineLoader } from '@mixins/animations';
 import { slideshowItems } from '@constants/data/hero-slideshow';
 import { Button } from '@components/Button';
 import AnimationCascade from '@components/AnimationCascade';
@@ -170,16 +171,7 @@ const TimelineContainer = styled.div`
 
    .background.active {
       width: 100%;
-      animation-name: loader;
-   }
-
-   @keyframes loader {
-      0% {
-         width: 0%;
-      }
-      100% {
-         width: 100%;
-      }
+      animation-name: ${timelineLoader};
    }
 `;
 
