@@ -1,14 +1,25 @@
-import React from "react";
-import styled from "styled-components";
-import { flex } from "@mixins/mixins";
-import links from "@constants/data/links";
-import { Link } from "gatsby";
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
+import { flex } from '@mixins/mixins';
+import { slideDown } from '@mixins/animations';
+import useScrollListener from '@hooks/useScrollListener';
+import links from '@constants/data/links';
+import { Link } from 'gatsby';
 
-import { BsSearch } from "@react-icons/all-files/bs/BsSearch";
-import { FaRegUser } from "@react-icons/all-files/fa/FaRegUser";
-import { BiShoppingBag } from "@react-icons/all-files/bi/BiShoppingBag";
+import { BsSearch } from '@react-icons/all-files/bs/BsSearch';
+import { FaRegUser } from '@react-icons/all-files/fa/FaRegUser';
+import { BiShoppingBag } from '@react-icons/all-files/bi/BiShoppingBag';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Navbar = () => {
+   const scroll = useScrollListener();
+
+   const [float, setFloat] = useState(false);
+
+   useEffect(() => {
+      setFloat(scroll.y > 250);
+   }, [scroll.x, scroll.lastY]);
+
    const linkItems = () => {
       return links.map((link: any, index: number) => {
          return (
@@ -20,44 +31,63 @@ const Navbar = () => {
    };
 
    return (
-      <Wrapper>
-         <span>Logo</span>
-         <ul role={"list"} className="navigation-links">
-            {linkItems()}
-         </ul>
-         <section className="icons-group">
-            <FaRegUser size={24} />
-            <BsSearch size={24} />
-            <BiShoppingBag size={24} />
-         </section>
+      <Wrapper float={float}>
+         <StylysedContainer>
+            <StaticImage src="../../assets/images/tease-logo.webp" alt="logo" />
+            <Links role={'list'}>{linkItems()}</Links>
+            <IconsList>
+               <FaRegUser size={24} />
+               <BsSearch size={24} />
+               <BiShoppingBag size={24} />
+            </IconsList>
+         </StylysedContainer>
       </Wrapper>
    );
 };
 
 const Wrapper = styled.nav`
+   width: 100%;
+   height: 4rem;
+   color: white;
+
+   ${({ float }: any) =>
+      float &&
+      css`
+         position: fixed;
+         inset: 0;
+         z-index: 25;
+         background: #f9f9f9;
+         color: var(--bluishGreen-300);
+         height: 96px;
+
+         animation-name: ${slideDown};
+         animation-duration: 0.4s;
+         animation-timing-function: linear;
+      `}
+`;
+
+const StylysedContainer = styled.div`
    max-width: 1500px;
-   height: 2rem;
+   height: 100%;
    margin: auto;
-   padding-top: 2.5rem;
    ${flex()}
-   gap: 1rem;
+   gap: 2.5rem;
+`;
 
-   .navigation-links {
-      display: flex;
-      gap: 1.5rem;
-   }
+const Links = styled.ul`
+   display: flex;
+   gap: 1.5rem;
 
-   .navigation-links a {
+   & a {
       text-decoration: none;
-      color: inherit;
       text-transform: capitalize;
    }
+`;
 
-   .icons-group {
-      display: flex;
-      gap: 2rem;
-      margin-left: auto;
-   }
+const IconsList = styled.section`
+   display: flex;
+   gap: 2rem;
+   margin-left: auto;
 `;
 
 export default Navbar;
