@@ -9,6 +9,7 @@ import { announcements } from '@constants/data/announcements';
 import ImageContainer from '@components/ImageContainer';
 import { Button } from '@components/Button';
 import AssociateLogosSection from '@components/AssociateLogosSection';
+import BenefitShopSection from '@components/BenefitShopSection';
 
 const IndexPage = () => {
    return (
@@ -28,33 +29,8 @@ const IndexPage = () => {
 
             <AssociateLogosSection />
 
-            <section
-               style={{
-                  width: '100%',
-                  paddingInline: '10rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-               }}
-            >
-               <h2>shop by benefit:</h2>
-               <div style={{ width: '100%', display: 'flex', gap: '2rem' }}>
-                  {Array.from(Array(4)).map((_) => {
-                     return (
-                        <ImageContainer
-                           style={{
-                              display: 'flex',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                           }}
-                           hasHoverEffect={true}
-                        >
-                           <Button text="Focus" />
-                        </ImageContainer>
-                     );
-                  })}
-               </div>
-            </section>
+            <BenefitShopSection />
+
             <section
                style={{
                   width: '100%',

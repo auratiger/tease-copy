@@ -18,7 +18,9 @@ const Button: FC<ButtonProps> = ({
 }) => {
    return (
       <ButtonWrapper to={url} color={color} isOutlined={isOutlined} {...other}>
-         {text}
+         <span>
+            {text}
+         </span>
       </ButtonWrapper>
    );
 };
@@ -31,8 +33,9 @@ const ButtonWrapper = styled(Link)`
    text-decoration: none;
    letter-spacing: var(--spacing-md);
 
-   color: white;
-   background-color: brown;
+   color: var(--bluishGreen-300);
+   background-color: white;
+   border-radius: 2px;
 
    ${({ isOutlined }: any) =>
       isOutlined &&
@@ -42,7 +45,11 @@ const ButtonWrapper = styled(Link)`
          border: 1px solid brown;
       `}
 
-   border-radius: 5px;
+   & > span {
+      font-family: var(--ff-header-primary);
+      font-size: var(--fs-600);
+      font-weight: 800;
+   }
 `;
 
 const colors = {
