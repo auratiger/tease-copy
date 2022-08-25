@@ -8,6 +8,7 @@ export interface Props {
    gatsbyImage: IGatsbyImageData;
    alt?: string;
    hasHoverEffect?: boolean;
+   className?: string;
    width?: number;
    height?: number;
 }
@@ -18,6 +19,7 @@ const ImageContainer: FC<Props> = ({
    gatsbyImage,
    alt = "image",
    hasHoverEffect,
+   className,
    width,
    height,
    ...other
@@ -30,7 +32,7 @@ const ImageContainer: FC<Props> = ({
             className="background"
          />
          {outline && <div className="outline"></div>}
-         <div className={`box`} {...other}>
+         <div className={`box ${className}`} {...other}>
             {children}
          </div>
       </Wrapper>
@@ -44,6 +46,9 @@ const Wrapper = styled.div`
    width: ${({ width }: any) => (width ? `${width}px` : '100%')};
    height: ${({ height }: any) => (height ? `${height}px` : '100%')};
 
+   display: flex;
+   flex-direction: column;
+
    .box {
       position: absolute;
       inset: 0;
@@ -51,8 +56,12 @@ const Wrapper = styled.div`
 
    .outline {
       position: absolute;
-      inset: 5%;
+      inset: 10px;
       border: 3px solid white;
+   }
+
+   .background {
+
    }
 
    ${({ hasHoverEffect }: any) =>

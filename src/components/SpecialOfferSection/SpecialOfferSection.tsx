@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ImageContainer from '@components/ImageContainer';
 import { graphql, useStaticQuery } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
+import { flex } from '@mixins/mixins';
+import { Button } from '@components/Button';
 
 const SpecialOfferSection = () => {
 
@@ -16,14 +18,14 @@ const SpecialOfferSection = () => {
             return (
                <ImageContainer
                   gatsbyImage={getImage(edge.node)}
-                  style={{
-                     display: 'flex',
-                     justifyContent: 'center',
-                     alignItems: 'center',
-                  }}
                   outline={true}
-                  height={400}
-               />
+                  height={500}
+                  className='container'
+               >
+                  <span>For high (temperature) standards</span>
+                  <h1>the smart heated mug kit</h1>
+                  <Button text={'buy now'} />
+               </ImageContainer>
             )
          })}
       </Wrapper>
@@ -32,10 +34,16 @@ const SpecialOfferSection = () => {
 
 const Wrapper = styled.section`
    width: 100%;
-   padding-inline: 5rem;
+   padding-inline: 4rem;
    display: flex;
    align-items: center;
-   gap: 4rem;
+   gap: 2rem;
+
+   .container {
+      ${flex({ dir: 'column', justify: 'flex-start', align: 'flex-end' })}
+      padding: 4rem;
+      color: white;
+   }
 `
 
 export const query = graphql`
