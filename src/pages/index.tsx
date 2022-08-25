@@ -18,14 +18,14 @@ const IndexPage = () => {
          <HeaderWrapper />
          <Wrapper>
             <Hero />
-            <section className="wellness-section">
-               <h2>wellness rituals shouldn't be complicated.</h2>
+            <Wellness>
+               <h1>wellness rituals shouldn't be complicated.</h1>
                <p>
                   we're tease. We create all natural, tea + botanical based
                   products that compliment each other and your goals without
                   compromising convenience, sustainability, or impact.
                </p>
-            </section>
+            </Wellness>
 
             <AnimationCascade
                as="section"
@@ -220,15 +220,25 @@ const Wrapper = styled.main`
    ${flex({ dir: 'column' })};
    gap: 4rem;
 
-   .wellness-section {
-      width: 30%;
-      ${flex({ dir: 'column' })};
-      text-align: center;
-   }
-
    .img-container: {
       ${flex()}
    }
 `;
+
+const Wellness = styled.section`
+      width: 40%;
+      ${flex({ dir: 'column' })};
+      gap: 1rem;
+      text-align: center;
+      color: var(--bluishGreen-300);
+
+      h1, p {
+         font-size: var(--fs-700);
+      }
+
+      p {
+         font-size: 1.5rem;
+      }
+`
 
 export default IndexPage;
