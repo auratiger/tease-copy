@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import { flex } from '@mixins/mixins';
 import { App } from '@components/App';
 import { Announcement } from '@components/Announcement';
-import AnimationCascade from '@components/AnimationCascade';
 import { HeaderWrapper } from '@components/Navbar';
 import { Hero } from '@components/Hero';
 import { announcements } from '@constants/data/announcements';
-import { StaticImage } from 'gatsby-plugin-image';
 import ImageContainer from '@components/ImageContainer';
 import { Button } from '@components/Button';
+import AssociateLogosSection from '@components/AssociateLogosSection';
 
 const IndexPage = () => {
    return (
@@ -27,38 +26,8 @@ const IndexPage = () => {
                </p>
             </Wellness>
 
-            <AnimationCascade
-               as="section"
-               duration={0.5}
-               delay={0.2}
-               style={{ display: 'flex' }}
-            >
-               <StaticImage
-                  src="../assets/images/sponsors/Forbes.webp"
-                  alt="hello"
-                  width={200}
-               />
-               <StaticImage
-                  src="../assets/images/sponsors/Forbes.webp"
-                  alt="hello"
-                  width={200}
-               />
-               <StaticImage
-                  src="../assets/images/sponsors/Forbes.webp"
-                  alt="hello"
-                  width={200}
-               />
-               <StaticImage
-                  src="../assets/images/sponsors/Forbes.webp"
-                  alt="hello"
-                  width={200}
-               />
-               <StaticImage
-                  src="../assets/images/sponsors/Forbes.webp"
-                  alt="hello"
-                  width={200}
-               />
-            </AnimationCascade>
+            <AssociateLogosSection />
+
             <section
                style={{
                   width: '100%',
