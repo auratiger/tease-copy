@@ -1,10 +1,22 @@
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 
-const ImageContainer: FC<any> = ({
+export interface Props {
+   children?: any;
+   outline?: boolean;
+   gatsbyImage: IGatsbyImageData;
+   alt?: string;
+   hasHoverEffect?: boolean;
+   width?: number;
+   height?: number;
+}
+
+const ImageContainer: FC<Props> = ({
    children,
    outline,
+   gatsbyImage,
+   alt = "image",
    hasHoverEffect,
    width,
    height,
@@ -12,11 +24,10 @@ const ImageContainer: FC<any> = ({
 }) => {
    return (
       <Wrapper hasHoverEffect={hasHoverEffect} width={width} height={height}>
-         <StaticImage
-            src="../../assets/images/TeaseTeaHocusFocus-2_360x.webp"
-            alt="image"
+         <GatsbyImage
+            image={gatsbyImage}
+            alt={alt}
             className="background"
-            layout="fullWidth"
          />
          {outline && <div className="outline"></div>}
          <div className={`box`} {...other}>

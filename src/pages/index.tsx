@@ -10,6 +10,7 @@ import ImageContainer from '@components/ImageContainer';
 import { Button } from '@components/Button';
 import AssociateLogosSection from '@components/AssociateLogosSection';
 import BenefitShopSection from '@components/BenefitShopSection';
+import SpecialOfferSection from '@components/SpecialOfferSection';
 
 const IndexPage = () => {
    return (
@@ -31,34 +32,8 @@ const IndexPage = () => {
 
             <BenefitShopSection />
 
-            <section
-               style={{
-                  width: '100%',
-                  paddingInline: '5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4rem',
-               }}
-            >
-               <ImageContainer
-                  style={{
-                     display: 'flex',
-                     justifyContent: 'center',
-                     alignItems: 'center',
-                  }}
-                  outline={true}
-                  height={400}
-               ></ImageContainer>
-               <ImageContainer
-                  style={{
-                     display: 'flex',
-                     justifyContent: 'center',
-                     alignItems: 'center',
-                  }}
-                  outline={true}
-                  height={400}
-               ></ImageContainer>
-            </section>
+            <SpecialOfferSection />
+
             <section
                style={{
                   width: '100%',

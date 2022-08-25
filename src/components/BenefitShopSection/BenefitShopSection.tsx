@@ -1,9 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
 import ImageContainer from '@components/ImageContainer';
 import { Button } from '@components/Button';
 
 const BenefitShopSection = () => {
+
+   const { file } = useStaticQuery(query);
+
    return (
       <Wrapper>
          <h2>shop by benefit:</h2>
@@ -11,6 +16,7 @@ const BenefitShopSection = () => {
             {Array.from(Array(4)).map((_) => {
                return (
                   <ImageContainer
+                     gatsbyImage={getImage(file)}
                      style={{
                         display: 'flex',
                         justifyContent: 'center',
@@ -43,7 +49,16 @@ const Wrapper = styled.section`
       width: 100%; 
       gap: 2rem;
    }
-
 `
+
+export const query = graphql`
+   query {
+     file(name: {eq: "TeaseTeaHocusFocus"}) {
+       childImageSharp {
+         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+       }
+     }
+   }
+`;
 
 export default BenefitShopSection;
