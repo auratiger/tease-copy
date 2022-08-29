@@ -12,6 +12,7 @@ import AssociateLogosSection from '@components/AssociateLogosSection';
 import BenefitShopSection from '@components/BenefitShopSection';
 import SpecialOfferSection from '@components/SpecialOfferSection';
 import EssentialOffersPreview from '@components/EssentialOffersPreview';
+import LabelSection from '@components/LabelSection';
 
 const IndexPage = () => {
    return (
@@ -33,9 +34,8 @@ const IndexPage = () => {
             <SpecialOfferSection />
             <EssentialOffersPreview />
 
-            <section
-               style={{ width: '100%', height: '40rem', background: 'green' }}
-            ></section>
+            <LabelSection />
+
             <section
                style={{
                   width: '100%',
