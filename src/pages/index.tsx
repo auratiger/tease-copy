@@ -13,6 +13,7 @@ import BenefitShopSection from '@components/BenefitShopSection';
 import SpecialOfferSection from '@components/SpecialOfferSection';
 import EssentialOffersPreview from '@components/EssentialOffersPreview';
 import LabelSection from '@components/LabelSection';
+import RefillSection from '@components/RefillSection';
 
 const IndexPage = () => {
    return (
@@ -36,34 +37,8 @@ const IndexPage = () => {
 
             <LabelSection />
 
-            <section
-               style={{
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  paddingInline: '4rem',
-               }}
-            >
-               <h2>refills: kinder to the planet & your wallet</h2>
+            <RefillSection />
 
-               <div style={{ width: '100%', display: 'flex', gap: '2rem' }}>
-                  {Array.from(Array(4)).map((_) => {
-                     return (
-                        <ImageContainer
-                           style={{
-                              display: 'flex',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                           }}
-                           hasHoverEffect={true}
-                        >
-                           <Button text="Focus" />
-                        </ImageContainer>
-                     );
-                  })}
-               </div>
-            </section>
             <section
                style={{
                   width: '100%',
