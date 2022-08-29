@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { flex, hideScroll } from '@mixins/mixins';
+import { flex, hideScroll, fillContainer } from '@mixins/mixins';
 import { timelineLoader } from '@mixins/animations';
 import { slideshowItems } from '@constants/data/hero-slideshow';
 import { Button } from '@components/Button';
@@ -184,8 +184,7 @@ const Wrapper = styled.article`
 
    .slideshow {
       display: flex;
-      width: 100%;
-      height: 100%;
+      ${fillContainer}
       scroll-snap-type: x proximity;
       cursor: pointer;
       overflow: hidden;
@@ -193,8 +192,7 @@ const Wrapper = styled.article`
    }
 
    .slide {
-      width: 100%;
-      height: 100%;
+      ${fillContainer}
       flex: none;
       padding: 8rem 3rem;
       color: white;

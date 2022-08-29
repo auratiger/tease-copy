@@ -11,6 +11,7 @@ import { Button } from '@components/Button';
 import AssociateLogosSection from '@components/AssociateLogosSection';
 import BenefitShopSection from '@components/BenefitShopSection';
 import SpecialOfferSection from '@components/SpecialOfferSection';
+import EssentialOffersPreview from '@components/EssentialOffersPreview';
 
 const IndexPage = () => {
    return (
@@ -27,42 +28,11 @@ const IndexPage = () => {
                   compromising convenience, sustainability, or impact.
                </p>
             </Wellness>
-
             <AssociateLogosSection />
-
             <BenefitShopSection />
-
             <SpecialOfferSection />
+            <EssentialOffersPreview />
 
-            <section
-               style={{
-                  width: '100%',
-                  paddingInline: '10rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '2rem',
-               }}
-            >
-               <h2>The essentials</h2>
-               <Button text={'view All'} />
-               <div style={{ width: '100%', display: 'flex', gap: '2rem' }}>
-                  {Array.from(Array(4)).map((_) => {
-                     return (
-                        <ImageContainer
-                           style={{
-                              display: 'flex',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                           }}
-                           hasHoverEffect={true}
-                        >
-                           <Button text="Focus" />
-                        </ImageContainer>
-                     );
-                  })}
-               </div>
-            </section>
             <section
                style={{ width: '100%', height: '40rem', background: 'green' }}
             ></section>

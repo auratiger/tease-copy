@@ -1,40 +1,44 @@
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
+import { flex, fillContainer } from '@mixins/mixins';
 
 export interface Props {
-   children?: any;
-   outline?: boolean;
    gatsbyImage: IGatsbyImageData;
-   alt?: string;
+   alt: string;
    hasHoverEffect?: boolean;
-   className?: string;
+   outline?: boolean;
    width?: number;
    height?: number;
+   children?: any;
+   renderTitle?: any;
 }
 
 const ImageContainer: FC<Props> = ({
-   children,
    outline,
    gatsbyImage,
-   alt = "image",
+   alt,
    hasHoverEffect,
-   className,
    width,
    height,
+   children,
+   renderTitle,
    ...other
 }) => {
    return (
       <Wrapper hasHoverEffect={hasHoverEffect} width={width} height={height}>
-         <GatsbyImage
-            image={gatsbyImage}
-            alt={alt}
-            className="background"
-         />
-         {outline && <div className="outline"></div>}
-         <div className={`box ${className}`} {...other}>
-            {children}
-         </div>
+         <StyledContainer>
+            <GatsbyImage
+               image={gatsbyImage}
+               alt={alt}
+               className="background"
+            />
+            {outline && <Outline />}
+            <ChildrenBox {...other}>
+               {children}
+            </ChildrenBox>
+         </StyledContainer>
+         {renderTitle?.()}
       </Wrapper>
    );
 };
@@ -46,23 +50,8 @@ const Wrapper = styled.div`
    width: ${({ width }: any) => (width ? `${width}px` : '100%')};
    height: ${({ height }: any) => (height ? `${height}px` : '100%')};
 
-   display: flex;
-   flex-direction: column;
-
-   .box {
-      position: absolute;
-      inset: 0;
-   }
-
-   .outline {
-      position: absolute;
-      inset: 10px;
-      border: 3px solid white;
-   }
-
-   .background {
-
-   }
+   ${flex({ dir: 'column' })};
+   gap: 0.4rem;
 
    ${({ hasHoverEffect }: any) =>
       hasHoverEffect &&
@@ -73,5 +62,25 @@ const Wrapper = styled.div`
          }
       `}
 `;
+
+const StyledContainer = styled.div`
+   overflow: hidden;
+
+   display: flex;
+   flex-direction: column;
+
+   ${fillContainer};
+`
+
+const ChildrenBox = styled.div`
+   position: absolute;
+   inset: 0;
+`
+
+const Outline = styled.div`
+   position: absolute;
+   inset: 10px;
+   border: 3px solid white;
+`
 
 export default ImageContainer;

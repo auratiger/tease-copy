@@ -2,104 +2,105 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { flex, hideScroll, userSelect } from '@mixins/mixins';
 import useInterval from '@hooks/useInterval';
+import { fillContainer } from '@mixins/mixins';
 
 interface AnnouncementProps {
-  title: string;
-  description: string;
+   title: string;
+   description: string;
 }
 
 export interface Props {
-  announcements: Array<AnnouncementProps>;
+   announcements: Array<AnnouncementProps>;
 }
 
 const Announcement: FC<Props> = ({ announcements }) => {
-  const scrollRef = useRef<HTMLElement>(null);
-  const [isDown, setIsDown] = useState<boolean>(false);
-  const [startX, setStartX] = useState<number>(0);
-  const [move, setMove] = useState<number>(0);
+   const scrollRef = useRef<HTMLElement>(null);
+   const [isDown, setIsDown] = useState<boolean>(false);
+   const [startX, setStartX] = useState<number>(0);
+   const [move, setMove] = useState<number>(0);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      setMove(scrollRef.current.scrollWidth / announcements.length);
-    }
-  }, [announcements]);
-
-  useInterval(
-    () => {
+   useEffect(() => {
       if (scrollRef.current) {
-        let moveTo: number = scrollRef.current.scrollLeft + move;
-        if (moveTo + 1 >= scrollRef.current.scrollWidth) {
-          moveTo = 0;
-        }
-        scrollRef.current.scrollLeft = moveTo;
+         setMove(scrollRef.current.scrollWidth / announcements.length);
       }
-    },
-    isDown ? null : 5000
-  );
+   }, [announcements]);
 
-  const onMouseDown = (e: any): void => {
-    e.persist();
-    setIsDown(true);
+   useInterval(
+      () => {
+         if (scrollRef.current) {
+            let moveTo: number = scrollRef.current.scrollLeft + move;
+            if (moveTo + 1 >= scrollRef.current.scrollWidth) {
+               moveTo = 0;
+            }
+            scrollRef.current.scrollLeft = moveTo;
+         }
+      },
+      isDown ? null : 5000
+   );
 
-    if (scrollRef.current) {
-      setStartX(e.pageX - scrollRef.current.offsetLeft);
-      scrollRef.current.style.cursor = 'grabbing';
-    }
-  };
+   const onMouseDown = (e: any): void => {
+      e.persist();
+      setIsDown(true);
 
-  const onMouseUp = (): void => {
-    setIsDown(false);
+      if (scrollRef.current) {
+         setStartX(e.pageX - scrollRef.current.offsetLeft);
+         scrollRef.current.style.cursor = 'grabbing';
+      }
+   };
 
-    if (scrollRef.current) {
-      scrollRef.current.style.cursor = 'grab';
-    }
-  };
+   const onMouseUp = (): void => {
+      setIsDown(false);
 
-  const onMouseMove = (e: React.MouseEvent<HTMLElement>): void => {
-    e.preventDefault();
+      if (scrollRef.current) {
+         scrollRef.current.style.cursor = 'grab';
+      }
+   };
 
-    if (!isDown) return;
+   const onMouseMove = (e: React.MouseEvent<HTMLElement>): void => {
+      e.preventDefault();
 
-    if (scrollRef.current) {
-      const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
+      if (!isDown) return;
 
-      const x: number = e.pageX - offsetLeft;
-      const tolerance: number = 20;
+      if (scrollRef.current) {
+         const { offsetLeft, scrollWidth, scrollLeft } = scrollRef.current;
 
-      let moveTo: number =
-        scrollLeft + tolerance + move * Math.sign(startX - x);
+         const x: number = e.pageX - offsetLeft;
+         const tolerance: number = 20;
 
-      if (moveTo >= scrollWidth) moveTo = 0;
-      else if (moveTo < 0) moveTo = scrollWidth;
+         let moveTo: number =
+            scrollLeft + tolerance + move * Math.sign(startX - x);
 
-      scrollRef.current.scrollLeft = moveTo;
-    }
-  };
+         if (moveTo >= scrollWidth) moveTo = 0;
+         else if (moveTo < 0) moveTo = scrollWidth;
 
-  const announcementItems = useMemo(() => {
-    return announcements.map((announcement, index) => {
-      return (
-        <section key={index}>
-          <strong className="title">{announcement.title}</strong>
-          {announcement.description && (
-            <span className="description">{announcement.description}</span>
-          )}
-        </section>
-      );
-    });
-  }, [announcements]);
+         scrollRef.current.scrollLeft = moveTo;
+      }
+   };
 
-  return (
-    <Wrapper
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-      onMouseMove={onMouseMove}
-      ref={scrollRef}
-    >
-      {announcementItems}
-    </Wrapper>
-  );
+   const announcementItems = useMemo(() => {
+      return announcements.map((announcement, index) => {
+         return (
+            <section key={index}>
+               <strong className="title">{announcement.title}</strong>
+               {announcement.description && (
+                  <span className="description">{announcement.description}</span>
+               )}
+            </section>
+         );
+      });
+   }, [announcements]);
+
+   return (
+      <Wrapper
+         onMouseDown={onMouseDown}
+         onMouseUp={onMouseUp}
+         onMouseLeave={onMouseUp}
+         onMouseMove={onMouseMove}
+         ref={scrollRef}
+      >
+         {announcementItems}
+      </Wrapper>
+   );
 };
 
 const Wrapper = styled.section`
@@ -122,8 +123,7 @@ const Wrapper = styled.section`
   ${hideScroll}
 
   section {
-    width: 100%;
-    height: 100%;
+    ${fillContainer}
     flex: none;
     ${flex()}
     gap: 0.5rem;
