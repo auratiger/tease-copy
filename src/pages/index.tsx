@@ -15,6 +15,7 @@ import EssentialOffersPreview from '@components/EssentialOffersPreview';
 import LabelSection from '@components/LabelSection';
 import RefillSection from '@components/RefillSection';
 import RefillAndRecycleSection from '@components/RefillAndRecycleSection';
+import BiodegradableSection from '@components/BiodegradableSection';
 
 const IndexPage = () => {
    return (
@@ -42,20 +43,7 @@ const IndexPage = () => {
 
             <RefillAndRecycleSection />
 
-            <section>
-               <h3>
-                  meet the worlds first fully biodegradable & refillable tea
-                  collection.
-               </h3>
-               <h4>
-                  we love beautiful packaging but hated the idea of having to
-                  toss it so we created an alternative.
-               </h4>
-               <h4>
-                  From outer packaging to our plant based pyramid tea bags, our
-                  collection is 100% biodegradable and refillable.
-               </h4>
-            </section>
+            <BiodegradableSection />
 
             <section
                style={{ width: '100%', height: '25rem', background: 'green' }}
