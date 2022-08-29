@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { graphql, useStaticQuery } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
@@ -55,7 +55,7 @@ const EssentialOffersPreview = () => {
          <h2>The essentials</h2>
          <Button text={'view All'} isOutlined={true} />
          <StyledContainer>
-            {essentialItems.map(({ title, price: { currentPrice, originalPrice } }: any, index) => {
+            {essentialItems.map(({ title, price: { currentPrice, originalPrice }, status }: any, index) => {
                return (
                   <ImageContainer
                      key={index}
@@ -77,6 +77,7 @@ const EssentialOffersPreview = () => {
                               </span> :
                               <span>${currentPrice}</span>
                            }
+                           {status !== ProductStatus.NONE && <Label inverse={status === ProductStatus.SAVE}>{status}</Label>}
                         </ImageTitleContainer>
                      }
                   >
@@ -124,6 +125,23 @@ const ImageTitleContainer = styled.div`
       opacity: 0.6;
    }
 
+`
+
+const Label = styled.div`
+   width: fit-content;
+   padding: 0.2rem 0.5rem;
+   color: var(--bluishGreen-300);
+   background-color: white;
+   position: absolute;
+   right: 0;
+   top: 0;
+
+   ${({ inverse }: any) =>
+      inverse &&
+      css`
+         color: white;
+         background-color: var(--bluishGreen-300);
+      `}
 `
 
 export const query = graphql`
