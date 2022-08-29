@@ -38,7 +38,7 @@ const Announcement: FC<Props> = ({ announcements }) => {
       isDown ? null : 5000
    );
 
-   const onMouseDown = (e: any): void => {
+   const onMouseDown = (e: React.MouseEvent<HTMLElement>): void => {
       e.persist();
       setIsDown(true);
 

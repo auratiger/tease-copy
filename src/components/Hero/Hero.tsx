@@ -68,7 +68,7 @@ const Hero = () => {
    };
 
    // events
-   const onMouseDown = (e: any): void => {
+   const onMouseDown = (e: React.MouseEvent<HTMLElement>): void => {
       e.persist();
       setIsDown(true);
 
@@ -78,7 +78,7 @@ const Hero = () => {
       }
    };
 
-   const onMouseUp = (e: any): void => {
+   const onMouseUp = (e: React.MouseEvent<HTMLElement>): void => {
       if (!isDown) return;
 
       if (!scrollRef.current) return;

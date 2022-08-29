@@ -1,11 +1,12 @@
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { flex, fillContainer } from '@mixins/mixins';
 
 export interface Props {
    gatsbyImage: IGatsbyImageData;
    alt: string;
+   hoverImage?: IGatsbyImageData;
    hasHoverEffect?: boolean;
    outline?: boolean;
    width?: number;
@@ -14,22 +15,49 @@ export interface Props {
    renderTitle?: any;
 }
 
+enum ContainerState {
+   NORMAL,
+   HOVER
+}
+
 const ImageContainer: FC<Props> = ({
-   outline,
    gatsbyImage,
    alt,
+   hoverImage,
    hasHoverEffect,
+   outline,
    width,
    height,
    children,
    renderTitle,
    ...other
 }) => {
+   const [state, setState] = useState(ContainerState.NORMAL);
+
+   const handleMouseOver = (e: React.MouseEvent<HTMLElement>) => {
+      e.preventDefault();
+
+      if (!hoverImage) return;
+
+      setState(ContainerState.HOVER)
+   }
+
+   const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+      e.preventDefault();
+
+      if (!hoverImage) return;
+
+      setState(ContainerState.NORMAL);
+   }
+
    return (
       <Wrapper hasHoverEffect={hasHoverEffect} width={width} height={height}>
-         <StyledContainer>
+         <StyledContainer
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+         >
             <GatsbyImage
-               image={gatsbyImage}
+               image={state === ContainerState.HOVER ? hoverImage : gatsbyImage}
                alt={alt}
                className="background"
             />

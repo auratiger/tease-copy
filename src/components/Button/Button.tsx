@@ -40,9 +40,9 @@ const ButtonWrapper = styled(Link)`
    ${({ isOutlined }: any) =>
       isOutlined &&
       css`
-         color: brown;
+         color: var(--bluishGreen-300);
          background-color: transparent;
-         border: 1px solid brown;
+         border: 1px solid var(--bluishGreen-300);
       `}
 
    & > span {

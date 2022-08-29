@@ -48,24 +48,24 @@ const essentialItems = [
 ]
 
 const EssentialOffersPreview = () => {
-   const { file } = useStaticQuery(query);
+   const { mainImage, secondaryImage } = useStaticQuery(query);
 
    return (
       <Wrapper>
          <h2>The essentials</h2>
-         <Button text={'view All'} isOutlined={true} />
+         <Button to={'essentials'} text={'view All'} isOutlined={true} />
          <StyledContainer>
             {essentialItems.map(({ title, price: { currentPrice, originalPrice }, status }: any, index) => {
                return (
                   <ImageContainer
                      key={index}
-                     gatsbyImage={getImage(file)}
+                     gatsbyImage={getImage(mainImage)}
+                     hoverImage={getImage(secondaryImage)}
                      style={{
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                      }}
-                     hasHoverEffect={true}
                      renderTitle={
                         () => <ImageTitleContainer>
                            <span className='title'>{title}</span>
@@ -140,18 +140,25 @@ const Label = styled.div`
       inverse &&
       css`
          color: white;
-         background-color: var(--bluishGreen-300);
+         background-color: var(--bluishGreen-100);
       `}
 `
 
 export const query = graphql`
-   query {
-     file(name: {eq: "TeaseTeaHocusFocus"}) {
+   query Images {
+      mainImage: file (name: {eq: "TeaseTeaHocusFocus"}) {
+       childImageSharp {
+         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+       }
+     }
+
+      secondaryImage: file (name: {eq: "smartmug"}) {
        childImageSharp {
          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
        }
      }
    }
+
 `;
 
 export default EssentialOffersPreview;
