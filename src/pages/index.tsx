@@ -14,6 +14,7 @@ import SpecialOfferSection from '@components/SpecialOfferSection';
 import EssentialOffersPreview from '@components/EssentialOffersPreview';
 import LabelSection from '@components/LabelSection';
 import RefillSection from '@components/RefillSection';
+import RefillAndRecycleSection from '@components/RefillAndRecycleSection';
 
 const IndexPage = () => {
    return (
@@ -39,25 +40,8 @@ const IndexPage = () => {
 
             <RefillSection />
 
-            <section
-               style={{
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  paddingInline: '20rem',
-               }}
-            >
-               <h2>Refill is the new recycle:</h2>
-               <ImageContainer
-                  style={{
-                     display: 'flex',
-                     justifyContent: 'center',
-                     alignItems: 'center',
-                  }}
-                  width={400}
-                  hasHoverEffect={true}
-               ></ImageContainer>
-            </section>
+            <RefillAndRecycleSection />
+
             <section>
                <h3>
                   meet the worlds first fully biodegradable & refillable tea
