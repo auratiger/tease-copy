@@ -16,6 +16,7 @@ import LabelSection from '@components/LabelSection';
 import RefillSection from '@components/RefillSection';
 import RefillAndRecycleSection from '@components/RefillAndRecycleSection';
 import BiodegradableSection from '@components/BiodegradableSection';
+import ReviewsSection from '@components/ReviewsSection';
 
 const IndexPage = () => {
    return (
@@ -45,9 +46,7 @@ const IndexPage = () => {
 
             <BiodegradableSection />
 
-            <section
-               style={{ width: '100%', height: '25rem', background: 'green' }}
-            ></section>
+            <ReviewsSection />
          </Wrapper>
       </App>
    );
