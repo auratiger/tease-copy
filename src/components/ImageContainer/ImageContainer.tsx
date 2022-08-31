@@ -3,6 +3,8 @@ import React, { FC, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { flex, fillContainer } from '@mixins/mixins';
 
+// TODO: group all properties related to styles into a single object: childrenStyles, imageStyles
+
 export interface Props {
    gatsbyImage: IGatsbyImageData;
    alt: string;

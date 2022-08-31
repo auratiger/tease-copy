@@ -5,6 +5,18 @@ import { createGlobalStyle } from 'styled-components';
 import './reset.css';
 import './fonts.css';
 
+// TODO: fine tune the variables for the application and add a global media query which will change the values of the variables accordingly
+
+// TODO: Test if the application has any redundant refreshes and if there are any places that can be optimised or exported
+
+// TODO: extract all nested render functions in components
+
+// TODO: Extract common components across the application like: Title, Header ...
+
+// TODO: Group the component folders into a more intuitive structure a.e. : components/landingpage/sections/, components/common
+
+// TODO: change relative paths to absolute paths
+
 const GlobalStyles = createGlobalStyle`
    :root {
 

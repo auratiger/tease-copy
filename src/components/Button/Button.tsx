@@ -2,6 +2,8 @@ import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import React, { FC } from 'react';
 
+// TODO: create a defacto default button instance and then multiple inherited instances with the specific styles for every specific variant of button
+
 interface ButtonProps {
    url: string;
    text: string;
