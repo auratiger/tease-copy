@@ -38,6 +38,9 @@
          "@constants": [
             "constants"
          ],
+         "@src": [
+            "./"
+         ],
          "@hooks": [
             "hooks"
          ],

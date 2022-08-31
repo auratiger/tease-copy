@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import gif from '../../../assets/gifs/giphy.gif';
+// import gif from '../../../assets/gifs/giphy.gif';
+import gif from '@src/assets/gifs/giphy.gif';
 
 const RefillAndRecycleSection = () => {
    return (

@@ -13,8 +13,6 @@ import './fonts.css';
 
 // TODO: Extract common components across the application like: Title, Header ...
 
-// TODO: change relative paths to absolute paths
-
 // TODO: Fix the inline pagination
 
 const GlobalStyles = createGlobalStyle`
