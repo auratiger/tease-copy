@@ -6,7 +6,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
    actions.setWebpackConfig({
       resolve: {
          alias: {
-            "@components": path.resolve(__dirname, "src/components"),
+            "@homepage": path.resolve(__dirname, "src/modules/homepage"),
+            "@common": path.resolve(__dirname, "src/modules/common"),
             "@constants": path.resolve(__dirname, "src/constants"),
             "@hooks": path.resolve(__dirname, "src/hooks"),
             "@mixins": path.resolve(__dirname, "src/mixins"),

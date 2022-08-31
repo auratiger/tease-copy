@@ -1,22 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { flex } from '@mixins/mixins';
-import { App } from '@components/App';
-import { Announcement } from '@components/Announcement';
-import { HeaderWrapper } from '@components/Navbar';
-import { Hero } from '@components/Hero';
 import { announcements } from '@constants/data/announcements';
-import AssociateLogosSection from '@components/AssociateLogosSection';
-import BenefitShopSection from '@components/BenefitShopSection';
-import SpecialOfferSection from '@components/SpecialOfferSection';
-import EssentialOffersPreview from '@components/EssentialOffersPreview';
-import LabelSection from '@components/LabelSection';
-import RefillSection from '@components/RefillSection';
-import RefillAndRecycleSection from '@components/RefillAndRecycleSection';
-import BiodegradableSection from '@components/BiodegradableSection';
-import ReviewsSection from '@components/ReviewsSection';
-import BlendsBenefitSection from '@components/BlendsBenefitSection';
-import JournalSection from '@components/JournalSection';
+import { Announcement, App, HeaderWrapper } from '@common';
+import {
+   Hero, AssociateLogosSection, BenefitShopSection, SpecialOfferSection, EssentialOffersPreview,
+   LabelSection, RefillSection, RefillAndRecycleSection, BiodegradableSection, ReviewsSection, BlendsBenefitSection, JournalSection
+} from '@homepage';
 
 const IndexPage = () => {
    return (
