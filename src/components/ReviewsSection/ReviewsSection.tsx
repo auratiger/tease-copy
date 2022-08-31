@@ -83,15 +83,13 @@ const Wrapper = styled.section`
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 4rem;
    padding-block: 4rem;
-   margin-bottom: 20rem;
 `
 
 const SwiperContainer = styled(Swiper)`
    width: 100%;
    height: 100%;
-   overflow: visible !important;
+   padding-block: 5rem 2rem;
    isolation: isolate;
 
    .swiper-wrapper {

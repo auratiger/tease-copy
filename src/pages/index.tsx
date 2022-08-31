@@ -6,8 +6,6 @@ import { Announcement } from '@components/Announcement';
 import { HeaderWrapper } from '@components/Navbar';
 import { Hero } from '@components/Hero';
 import { announcements } from '@constants/data/announcements';
-import ImageContainer from '@components/ImageContainer';
-import { Button } from '@components/Button';
 import AssociateLogosSection from '@components/AssociateLogosSection';
 import BenefitShopSection from '@components/BenefitShopSection';
 import SpecialOfferSection from '@components/SpecialOfferSection';
@@ -17,6 +15,7 @@ import RefillSection from '@components/RefillSection';
 import RefillAndRecycleSection from '@components/RefillAndRecycleSection';
 import BiodegradableSection from '@components/BiodegradableSection';
 import ReviewsSection from '@components/ReviewsSection';
+import BlendsBenefitSection from '@components/BlendsBenefitSection';
 
 const IndexPage = () => {
    return (
@@ -37,16 +36,12 @@ const IndexPage = () => {
             <BenefitShopSection />
             <SpecialOfferSection />
             <EssentialOffersPreview />
-
             <LabelSection />
-
             <RefillSection />
-
             <RefillAndRecycleSection />
-
             <BiodegradableSection />
-
             <ReviewsSection />
+            <BlendsBenefitSection />
          </Wrapper>
       </App>
    );
