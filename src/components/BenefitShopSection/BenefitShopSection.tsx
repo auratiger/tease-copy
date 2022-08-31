@@ -24,7 +24,7 @@ const BenefitShopSection = () => {
                      }}
                      hasHoverEffect={true}
                   >
-                     <Button text="Focus" />
+                     <Button text="Focus" btnStyle={{ useHeaderFont: true }} />
                   </ImageContainer>
                );
             })}

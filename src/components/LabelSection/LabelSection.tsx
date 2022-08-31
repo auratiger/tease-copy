@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
 import { flex } from '@mixins/mixins';
-import { Button } from '@components/Button';
+import { LightGreenButton } from '@components/Button';
 
 const LabelSection = () => {
    return (
       <Wrapper>
          <h1>for high (temperature) standards.</h1>
          <span>never drink lukewarm tea again</span>
-         <Button text={'smart heated mug kit'} isOutlined={true} />
+         <LightGreenButton text={'smart heated mug kit'} btnStyle={{ isOutlined: true }} />
       </Wrapper>
    )
 }

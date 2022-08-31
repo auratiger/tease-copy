@@ -53,7 +53,7 @@ const EssentialOffersPreview = () => {
    return (
       <Wrapper>
          <h2>The essentials</h2>
-         <Button to={'essentials'} text={'view All'} isOutlined={true} />
+         <Button to={'essentials'} text={'view All'} btnStyle={{ isOutlined: true }} />
          <StyledContainer>
             {essentialItems.map(({ title, price: { currentPrice, originalPrice }, status }: any, index) => {
                return (

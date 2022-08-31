@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { flex, hideScroll, fillContainer } from '@mixins/mixins';
 import { timelineLoader } from '@mixins/animations';
 import { slideshowItems } from '@constants/data/hero-slideshow';
-import { Button } from '@components/Button';
+import { BrownButton } from '@components/Button';
 import AnimationCascade from '@components/AnimationCascade';
 import useInterval from '@hooks/useInterval';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -115,7 +115,7 @@ const Hero = () => {
                <AnimationCascade active={isActiveSlide} className="title-box">
                   <h2>{item.title}</h2>
                   <h3>{item.description}</h3>
-                  <Button url={item.url} text={item.button.text} />
+                  <BrownButton url={item.url} text={item.button.text} />
                </AnimationCascade>
             </section>
          );

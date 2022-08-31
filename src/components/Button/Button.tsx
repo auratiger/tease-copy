@@ -2,24 +2,28 @@ import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import React, { FC } from 'react';
 
-// TODO: create a defacto default button instance and then multiple inherited instances with the specific styles for every specific variant of button
-
 interface ButtonProps {
    url: string;
    text: string;
-   color?: 'primary' | 'secondary' | 'accent';
-   isOutlined?: boolean;
+   btnStyle: ButtonStyles
 }
 
-const Button: FC<ButtonProps> = ({
+interface ButtonStyles {
+   isOutlined?: boolean;
+   isInversed?: boolean;
+   useHeaderFont?: boolean;
+}
+
+export const Button: FC<ButtonProps> = ({
    url,
    text,
-   color = 'primary',
-   isOutlined = false,
+   btnStyle = {},
    ...other
 }) => {
+   const { isOutlined, isInversed, useHeaderFont } = btnStyle;
+
    return (
-      <ButtonWrapper to={url} color={color} isOutlined={isOutlined} {...other}>
+      <ButtonWrapper to={url} isOutlined={isOutlined} isInversed={isInversed} headerFont={useHeaderFont} {...other}>
          <span>
             {text}
          </span>
@@ -28,36 +32,55 @@ const Button: FC<ButtonProps> = ({
 };
 
 const ButtonWrapper = styled(Link)`
+   --primary-color: var(--bluishGreen-300);
+   --secondary-color: var(--gray-100);
+
    display: block;
    width: fit-content;
-   padding: 0.5rem 1rem;
+   padding: 0.5rem 1.5rem;
 
    text-decoration: none;
    letter-spacing: var(--spacing-md);
 
-   color: var(--bluishGreen-300);
-   background-color: white;
+   color: var(--primary-color);
+   background-color: var(--secondary-color);
    border-radius: 2px;
 
    ${({ isOutlined }: any) =>
       isOutlined &&
       css`
-         color: var(--bluishGreen-300);
+         color: var(--primary-color);
          background-color: transparent;
-         border: 1px solid var(--bluishGreen-300);
-      `}
+         border: 1px solid var(--primary-color);
+      `
+   }
 
-   & > span {
-      font-family: var(--ff-header-primary);
-      font-size: var(--fs-600);
-      font-weight: 800;
+   ${({ isInversed }: any) =>
+      isInversed &&
+      css`
+         color: var(--secondary-color);
+         background-color: var(--primary-color);
+      `
+   }
+
+   font-size: var(--fs-500);
+   font-weight: 800;
+
+   ${({ headerFont }: any) =>
+      headerFont &&
+      css`
+         font-family: var(--ff-header-primary);
+      `
    }
 `;
 
-const colors = {
-   primary: '#1C76E2',
-   secondary: '#E10D30',
-   accent: '#155EC2',
-};
+export const BrownButton = styled(Button)`
+   --primary-color: var(--gray-100);
+   --secondary-color: var(--pr-brown);
+`
 
-export default Button;
+export const LightGreenButton = styled(Button)`
+   --primary-color: var(--gray-100);
+   --secondary-color: var(--bluishGreen-100);
+   font-size: var(--fs-500)
+`

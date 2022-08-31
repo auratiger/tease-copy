@@ -17,13 +17,20 @@ import './fonts.css';
 
 // TODO: change relative paths to absolute paths
 
+// TODO: Fix the inline pagination
+
 const GlobalStyles = createGlobalStyle`
    :root {
 
       /* Bluish green */
       --bluishGreen-100: #88a693;
-      --bluishGreen-200: #3ce669;
+      --bluishGreen-200: #1f452a;
       --bluishGreen-300: #1d432b;
+
+      --gray-100: #ffffff;
+      --gray-200: #f9f9f9;
+
+      --pr-brown: #94502a;
 
       --ff-header-primary: 'Playfair Display', sans-serif;
       --ff-base-primary: 'Nunito', sans-serif;

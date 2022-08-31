@@ -4,7 +4,7 @@ import ImageContainer from '@components/ImageContainer';
 import { graphql, useStaticQuery } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
 import { flex } from '@mixins/mixins';
-import { Button } from '@components/Button';
+import { LightGreenButton } from '@components/Button';
 
 const SpecialOfferSection = () => {
 
@@ -24,7 +24,7 @@ const SpecialOfferSection = () => {
                >
                   <span>For high (temperature) standards</span>
                   <h1>the smart heated mug kit</h1>
-                  <Button text={'buy now'} />
+                  <LightGreenButton text={'Buy now'} />
                </ImageContainer>
             )
          })}
