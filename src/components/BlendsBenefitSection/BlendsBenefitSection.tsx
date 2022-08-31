@@ -31,7 +31,6 @@ const BlendsBenefitSection = () => {
 }
 
 const Wrapper = styled.section`
-   margin-bottom: 20rem;
    width: 100%;
    ${flex({ dir: 'column' })}
    gap: 1rem;
@@ -43,6 +42,7 @@ const StyledContainer = styled.div`
 `
 
 const ImageContainer = styled.div`
+   width: 100%;
    padding-inline: 4rem;
    text-align: center;
    ${flex({ dir: 'column' })}

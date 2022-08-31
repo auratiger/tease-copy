@@ -16,6 +16,7 @@ import RefillAndRecycleSection from '@components/RefillAndRecycleSection';
 import BiodegradableSection from '@components/BiodegradableSection';
 import ReviewsSection from '@components/ReviewsSection';
 import BlendsBenefitSection from '@components/BlendsBenefitSection';
+import JournalSection from '@components/JournalSection';
 
 const IndexPage = () => {
    return (
@@ -42,6 +43,7 @@ const IndexPage = () => {
             <BiodegradableSection />
             <ReviewsSection />
             <BlendsBenefitSection />
+            <JournalSection />
          </Wrapper>
       </App>
    );
