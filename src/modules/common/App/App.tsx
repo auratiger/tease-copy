@@ -47,6 +47,7 @@ const GlobalStyles = createGlobalStyle`
 
       --spacing-sm: 0.1rem;
       --spacing-md: 0.2rem;
+      --spacing-lg: 0.3rem;
       --word-spacing-md: 0.2rem;
       --lh-sm: 0.5;
       --lh-md: 1;

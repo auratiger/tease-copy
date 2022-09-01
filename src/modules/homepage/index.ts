@@ -10,3 +10,4 @@ export { default as RefillAndRecycleSection } from './RefillAndRecycleSection';
 export { default as RefillSection } from './RefillSection';
 export { default as ReviewsSection } from './ReviewsSection';
 export { default as SpecialOfferSection } from './SpecialOfferSection';
+export { default as OwnerSection } from './OwnerSection';

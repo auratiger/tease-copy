@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 interface ButtonProps {
    to: string;
    text: string;
-   btnStyle: ButtonStyles
+   btnStyle?: ButtonStyles
 }
 
 type Sizes = 'sm' | 'md' | 'lg'

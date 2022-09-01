@@ -5,7 +5,8 @@ import { announcements } from '@constants/data/announcements';
 import { Announcement, App, HeaderWrapper } from '@common';
 import {
    Hero, AssociateLogosSection, BenefitShopSection, SpecialOfferSection, EssentialOffersPreview,
-   LabelSection, RefillSection, RefillAndRecycleSection, BiodegradableSection, ReviewsSection, BlendsBenefitSection, JournalSection
+   LabelSection, RefillSection, RefillAndRecycleSection, BiodegradableSection, ReviewsSection, BlendsBenefitSection, JournalSection,
+   OwnerSection
 } from '@homepage';
 
 const IndexPage = () => {
@@ -34,6 +35,7 @@ const IndexPage = () => {
             <ReviewsSection />
             <BlendsBenefitSection />
             <JournalSection />
+            <OwnerSection />
          </Main>
       </App>
    );

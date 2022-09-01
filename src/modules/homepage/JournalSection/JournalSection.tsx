@@ -63,7 +63,6 @@ const Wrapper = styled.section`
    display: flex;
    flex-direction: column;
    align-items: center;
-   padding-bottom: 10rem;
 `
 
 const StyledContainer = styled.div`
