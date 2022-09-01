@@ -21,7 +21,9 @@ const BenefitShopSection = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                      }}
-                     hasHoverEffect={true}
+                     imageStyles={{
+                        hasHoverEffect: true,
+                     }}
                   >
                      <Button url='hello' text="Focus" btnStyle={{ useHeaderFont: true }} />
                   </ImageContainer>

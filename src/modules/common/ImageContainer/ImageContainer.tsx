@@ -3,18 +3,20 @@ import React, { FC, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { flex, fillContainer } from '@mixins/mixins';
 
-// TODO: group all properties related to styles into a single object: childrenStyles, imageStyles
+export interface ImageStyles {
+   hasHoverEffect?: boolean;
+   outline?: boolean;
+   width?: number;
+   height?: number;
+}
 
 export interface ImageProps {
    gatsbyImage: IGatsbyImageData;
    alt: string;
    hoverImage?: IGatsbyImageData;
-   hasHoverEffect?: boolean;
-   outline?: boolean;
-   width?: number;
-   height?: number;
-   children?: any;
    renderTitle?: any;
+   children?: any;
+   imageStyles?: ImageStyles;
 }
 
 enum ContainerState {
@@ -26,14 +28,13 @@ export const ImageContainer: FC<ImageProps> = ({
    gatsbyImage,
    alt,
    hoverImage,
-   hasHoverEffect,
-   outline,
-   width,
-   height,
-   children,
    renderTitle,
+   children,
+   imageStyles = {},
    ...other
 }) => {
+   const { hasHoverEffect, outline, width, height } = imageStyles;
+
    const [state, setState] = useState(ContainerState.NORMAL);
 
    const handleMouseOver = (e: React.MouseEvent<HTMLElement>) => {

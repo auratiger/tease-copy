@@ -17,9 +17,11 @@ const SpecialOfferSection = () => {
             return (
                <ImageContainer
                   gatsbyImage={getImage(edge.node)}
-                  outline={true}
-                  height={500}
                   className='container'
+                  imageStyles={{
+                     outline: true,
+                     height: 500
+                  }}
                >
                   <span>For high (temperature) standards</span>
                   <h3>the smart heated mug kit</h3>

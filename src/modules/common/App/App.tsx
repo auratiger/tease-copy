@@ -11,8 +11,6 @@ import './fonts.css';
 
 // TODO: extract all nested render functions in components
 
-// TODO: Extract common components across the application like: Title, Header ...
-
 // TODO: Fix the inline pagination
 
 const GlobalStyles = createGlobalStyle`
