@@ -11,12 +11,11 @@ const AssociateLogosSection = () => {
    } = useStaticQuery(query);
 
    const renderImages = () => {
-      return edges.map((edge) => {
+      return edges.map((edge: any) => {
          const image: IGatsbyImageData = getImage(edge.node);
 
          return <GatsbyImage image={image} className={'image'} alt="hero" />
       })
-
    }
 
    return (
@@ -41,10 +40,11 @@ const Wrapper = styled.section`
       width: 100%;
       height: 50px;
       ${flex()}
+      gap: 4rem;
    }
 
    .container > * {
-         width: 150px;
+      width: 170px;
    }
 
 `

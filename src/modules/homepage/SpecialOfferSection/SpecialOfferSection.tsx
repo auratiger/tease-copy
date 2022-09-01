@@ -12,7 +12,7 @@ const SpecialOfferSection = () => {
    } = useStaticQuery(query);
 
    return (
-      <Wrapper>
+      <Wrapper className='full-bleed'>
          {edges.map((edge) => {
             return (
                <ImageContainer
@@ -44,6 +44,10 @@ const Wrapper = styled.section`
       ${flex({ dir: 'column', justify: 'flex-start', align: 'flex-end' })}
       padding: 4rem;
       color: white;
+   }
+
+   .container h3 {
+      font-size: var(--fs-600);
    }
 `
 

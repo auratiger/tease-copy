@@ -5,7 +5,7 @@ import { LightGreenButton } from '@common';
 
 const LabelSection = () => {
    return (
-      <Wrapper>
+      <Wrapper className='full-bleed'>
          <h1>for high (temperature) standards.</h1>
          <span>never drink lukewarm tea again</span>
          <LightGreenButton text={'smart heated mug kit'} btnStyle={{ isOutlined: true }} />

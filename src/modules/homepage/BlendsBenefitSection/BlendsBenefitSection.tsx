@@ -33,17 +33,16 @@ const BlendsBenefitSection = () => {
 const Wrapper = styled.section`
    width: 100%;
    ${flex({ dir: 'column' })}
-   gap: 1rem;
+   gap: 2rem;
 `
 
 const FlexRowContainer = styled.div`
    display: flex;
-   max-width: 80%;
 `
 
 const StyledContainer = styled.div`
    width: 100%;
-   padding-inline: 4rem;
+   padding-inline: 2rem;
    text-align: center;
    ${flex({ dir: 'column' })}
 

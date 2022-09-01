@@ -133,7 +133,7 @@ const Hero = () => {
    };
 
    return (
-      <Wrapper>
+      <Wrapper className="full-bleed">
          <div
             ref={scrollRef}
             className="slideshow"

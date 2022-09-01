@@ -13,18 +13,19 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import { StaticImage } from 'gatsby-plugin-image';
 
+
+const renderStars = () => {
+   return <Stars>
+      {Array.from(Array(5)).map((_) => {
+         return <AiFillStar />
+      })}
+   </Stars>
+}
+
 const ReviewsSection = () => {
 
-   const renderStars = () => {
-      return <Stars>
-         {Array.from(Array(5)).map((_) => {
-            return <AiFillStar />
-         })}
-      </Stars>
-   }
-
    return (
-      <Wrapper>
+      <Wrapper className='full-bleed'>
          <h2>The reviews are in:</h2>
 
          <SwiperContainer

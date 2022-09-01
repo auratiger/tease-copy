@@ -90,13 +90,10 @@ const RefillSection = () => {
 
 const Wrapper = styled.section`
    width: 100%;
-   padding-inline: 15rem;
    display: flex;
    flex-direction: column;
    align-items: center;
    gap: 2rem;
-
-   color: var(--bluishGreen-300);
 `
 
 const StyledContainer = styled.div`

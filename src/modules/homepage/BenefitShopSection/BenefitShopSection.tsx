@@ -25,7 +25,7 @@ const BenefitShopSection = () => {
                         hasHoverEffect: true,
                      }}
                   >
-                     <Button url='hello' text="Focus" btnStyle={{ useHeaderFont: true }} />
+                     <Button to='hello' text="Focus" btnStyle={{ useHeaderFont: true }} />
                   </ImageContainer>
                );
             })}
@@ -37,13 +37,10 @@ const BenefitShopSection = () => {
 
 const Wrapper = styled.section`
    width: 100%;
-   padding-inline: 20rem;
    display: flex;
    flex-direction: column;
    align-items: center;
    gap: 2rem;
-
-   color: var(--bluishGreen-300);
 
    .styled-container {
       display: flex; 

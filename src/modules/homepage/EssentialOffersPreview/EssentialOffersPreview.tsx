@@ -91,7 +91,6 @@ const EssentialOffersPreview = () => {
 
 const Wrapper = styled.section`
    width: 100%;
-   padding-inline: 15rem;
    display: flex;
    flex-direction: column;
    align-items: center;

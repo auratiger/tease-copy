@@ -16,7 +16,6 @@ const Wrapper = styled.section`
    display: flex;
    justify-content: space-around;
    align-items: center;
-   padding: 5rem 20rem;
 `
 
 const Title = styled.h3`

@@ -40,6 +40,9 @@ const EssentialOffersPreview = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                      }}
+                     imageStyles={{
+                        height: 400
+                     }}
                      renderTitle={
                         () => <ImageTitleContainer>
                            <small>{date}</small>
@@ -57,7 +60,6 @@ const EssentialOffersPreview = () => {
 
 const Wrapper = styled.section`
    width: 100%;
-   padding-inline: 20rem;
    display: flex;
    flex-direction: column;
    align-items: center;

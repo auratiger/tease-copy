@@ -21,12 +21,16 @@ const BiodegradableSection = () => {
 }
 
 const Wrapper = styled.section`
-   max-width: 50rem;
+   width: 100%;
    display: flex;
    flex-direction: column;
+   align-items: center;
    gap: 1rem;
    text-align: center;
-   color: var(--bluishGreen-300);
+
+   h2, p {
+      width: 65%;
+   }
 `
 
 export default BiodegradableSection;

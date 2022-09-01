@@ -11,8 +11,6 @@ import './fonts.css';
 
 // TODO: extract all nested render functions in components
 
-// TODO: Fix the inline pagination
-
 const GlobalStyles = createGlobalStyle`
    :root {
 
@@ -88,7 +86,6 @@ const GlobalStyles = createGlobalStyle`
       font-family: var(--ff-base-primary);
       font-size: var(--fs-400);
    }
-   
 `;
 
 export default ({ children }) => {

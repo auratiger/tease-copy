@@ -13,7 +13,7 @@ const IndexPage = () => {
       <App>
          <Announcement announcements={announcements} />
          <HeaderWrapper />
-         <Wrapper>
+         <Main>
             <Hero />
             <Wellness>
                <h2>wellness rituals shouldn't be complicated.</h2>
@@ -34,25 +34,42 @@ const IndexPage = () => {
             <ReviewsSection />
             <BlendsBenefitSection />
             <JournalSection />
-         </Wrapper>
+         </Main>
       </App>
    );
 };
 
-const Wrapper = styled.main`
-   ${flex({ dir: 'column' })};
+const Main = styled.main`
+   display: grid;
+   grid-template-columns:
+      1fr
+      min(70vw, 100%)
+      1fr;
    gap: 4rem;
 
    .img-container: {
       ${flex()}
    }
+
+   & > * {
+      grid-column: 2;
+   }
+
+   .full-bleed {
+      width: 100%;
+      grid-column: 1 / 4;
+   }
 `;
 
+
 const Wellness = styled.section`
-      width: 40%;
       ${flex({ dir: 'column' })};
       gap: 1rem;
       text-align: center;
+
+      p {
+         width: 70ch;
+      }
 `
 
 export default IndexPage;
