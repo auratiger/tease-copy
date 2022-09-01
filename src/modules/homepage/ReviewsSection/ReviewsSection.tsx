@@ -25,7 +25,7 @@ const ReviewsSection = () => {
 
    return (
       <Wrapper>
-         <Title>The reviews are in:</Title>
+         <h2>The reviews are in:</h2>
 
          <SwiperContainer
             slidesPerView={3}
@@ -43,21 +43,21 @@ const ReviewsSection = () => {
                {renderStars()}
                <p>Tease reminds me to take time, slow down, and be present while taking care of myself. I love every blend and love the refill program even more. I never have to think about ordering more tea.</p>
                <StaticImage src={'../../../assets/images/reviews/review-guy-one.avif'} alt="hello" className='review-img'></StaticImage>
-               <h2>Samantha</h2>
+               <h3>Samantha</h3>
                <span>Los Angeles, CA (@sammiegree)</span>
             </SwiperSlide>
             <SwiperSlide>
                {renderStars()}
                <p>A tea company that has great values?? Sign us up! So impressed with the blends themselves and their company values.</p>
                <StaticImage src={'../../../assets/images/reviews/review-guy-one.avif'} alt="hello" className='review-img'></StaticImage>
-               <h2>Reyhan</h2>
+               <h3>Reyhan</h3>
                <span>Toronto, Canada (@plantbasedrelationship)</span>
             </SwiperSlide>
             <SwiperSlide>
                {renderStars()}
                <p>Tease makes the best blends and accessories for my everyday living + wellness goals. I never leave home without my 3 in 1 tumbler.</p>
                <StaticImage src={'../../../assets/images/reviews/review-guy-one.avif'} alt="hello" className='review-img'></StaticImage>
-               <h2>Christina</h2>
+               <h3>Christina</h3>
                <span>Halifax, NS</span>
             </SwiperSlide>
             <SwiperSlide>
@@ -141,10 +141,6 @@ const Stars = styled.div`
    gap: 0.5rem;
    padding-bottom: 1rem;
    ${flex()}
-`
-
-const Title = styled.h1`
-   color: var(--bluishGreen-300);
 `
 
 export default ReviewsSection;

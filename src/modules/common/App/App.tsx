@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
       --fs-300: .8125rem;
       --fs-400: .875rem;
       --fs-500: 1rem;
-      --fs-600: 1.125rem;
+      --fs-600: 1.5rem;
       --fs-700: 1.875rem;
       --fs-800: 2.5rem;
       --fs-900: 3.5rem;
@@ -70,6 +70,7 @@ const GlobalStyles = createGlobalStyle`
       letter-spacing: var(--spacing-sm);
       line-height: var(--lh-header);
       margin-bottom: 0.75rem;
+      text-align: center;
    }
 
    h1 {font-size: var(--fs-800);}

@@ -16,7 +16,7 @@ const IndexPage = () => {
          <Wrapper>
             <Hero />
             <Wellness>
-               <h1>wellness rituals shouldn't be complicated.</h1>
+               <h2>wellness rituals shouldn't be complicated.</h2>
                <p>
                   we're tease. We create all natural, tea + botanical based
                   products that compliment each other and your goals without

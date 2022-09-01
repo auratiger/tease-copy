@@ -112,7 +112,7 @@ const Hero = () => {
             <section key={index} className={`slide`}>
                <GatsbyImage image={image} className={'hero-image'} alt="hero" />
                <AnimationCascade active={isActiveSlide} className="title-box">
-                  <h2>{item.title}</h2>
+                  <h1>{item.title}</h1>
                   <h3>{item.description}</h3>
                   <BrownButton url={item.url} text={item.button.text} />
                </AnimationCascade>
