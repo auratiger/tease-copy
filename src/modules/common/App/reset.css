@@ -41,7 +41,8 @@ p, h1, h2, h3, h4, h5, h6 {
    overflow-wrap: break-word;
 }
 
-small {font-size: 85%;}
+span {font-size: inherit;}
+small {font-size: 70%;}
 strong {font-weight: bold;}
 
 /* hand cursor on clickable elements */

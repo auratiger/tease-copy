@@ -53,15 +53,6 @@ const Wellness = styled.section`
       ${flex({ dir: 'column' })};
       gap: 1rem;
       text-align: center;
-      color: var(--bluishGreen-300);
-
-      h1, p {
-         font-size: var(--fs-700);
-      }
-
-      p {
-         font-size: 1.5rem;
-      }
 `
 
 export default IndexPage;

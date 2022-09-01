@@ -28,7 +28,7 @@ const EssentialOffersPreview = () => {
    return (
       <Wrapper>
          <h2>from the journal</h2>
-         <Button to={'essentials'} text={'view All'} btnStyle={{ isOutlined: true }} />
+         <Button to={'essentials'} text={'view All'} btnStyle={{ isOutlined: true, size: 'sm' }} />
          <StyledContainer>
             {essentialItems.map(({ title, date }: any, index) => {
                return (
@@ -42,7 +42,7 @@ const EssentialOffersPreview = () => {
                      }}
                      renderTitle={
                         () => <ImageTitleContainer>
-                           <span>{date}</span>
+                           <small>{date}</small>
                            <span className='title'>{title}</span>
                         </ImageTitleContainer>
                      }
@@ -61,29 +61,24 @@ const Wrapper = styled.section`
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 2rem;
-
-   color: var(--bluishGreen-300);
+   padding-bottom: 10rem;
 `
 
 const StyledContainer = styled.div`
+   padding-block: 3rem;
    display: flex;
    width: 100%;
    gap: 2rem;
 `
 
 const ImageTitleContainer = styled.div`
-   color: var(--bluishGreen-300);
-   font-size: var(--fs-400);
+   padding-block: 0.5rem;
    text-align: center;
-   word-spacing: 4px;
+   word-spacing: var(--word-spacing-md);
+   font-size: var(--fs-400);
 
    & > * {
       display: block;
-   }
-
-   .title {
-      font-size: var(--fs-600);
    }
 
    .obscure {

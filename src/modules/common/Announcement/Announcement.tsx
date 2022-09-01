@@ -111,14 +111,8 @@ const Wrapper = styled.section`
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   overflow-x: scroll;
-
   cursor: grab;
-
   background: var(--bluishGreen-100);
-
-  color: var(--bluishGreen-300);
-  font-size: var(--fs-400);
-  letter-spacing: var(--spacing-md);
 
   ${hideScroll}
 
@@ -132,12 +126,15 @@ const Wrapper = styled.section`
     ${userSelect}
   }
 
-  .title {
-    text-transform: uppercase;
-  }
+   .title {
+      text-transform: uppercase;
+      font-size: var(--fs-200);
+      letter-spacing: var(--spacing-md);
+   }
 
-  .description {
-    font-size: var(--fs-300);
-    text-decoration: underline;
-  }
+   .description {
+      font-size: var(--fs-100);
+      text-decoration: underline;
+      letter-spacing: var(--spacing-sm);
+   }
 `;

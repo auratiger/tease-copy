@@ -68,12 +68,12 @@ const RefillSection = () => {
                         () => <ImageTitleContainer>
                            <span className='title'>{title}</span>
                            {originalPrice ?
-                              <span>
+                              <small>
                                  <s>${originalPrice}</s>
                                  <span> from ${currentPrice}</span>
                                  <span className='obscure'> Save ${originalPrice - currentPrice}</span>
-                              </span> :
-                              <span>${currentPrice}</span>
+                              </small> :
+                              <small>${currentPrice}</small>
                            }
                            {status !== ProductStatus.NONE && <Label inverse={status === ProductStatus.SAVE}>{status}</Label>}
                         </ImageTitleContainer>
@@ -106,17 +106,12 @@ const StyledContainer = styled.div`
 `
 
 const ImageTitleContainer = styled.div`
-   color: var(--bluishGreen-300);
-   font-size: var(--fs-400);
    text-align: center;
-   word-spacing: 4px;
+   word-spacing: var(--word-spacing-md);
+   font-size: var(--fs-400);
 
    & > * {
       display: block;
-   }
-
-   .title {
-      font-size: var(--fs-600);
    }
 
    .obscure {
@@ -125,10 +120,9 @@ const ImageTitleContainer = styled.div`
 
 `
 
-const Label = styled.div`
+const Label = styled.small`
    width: fit-content;
    padding: 0.2rem 0.5rem;
-   color: var(--bluishGreen-300);
    background-color: white;
    position: absolute;
    right: 0;

@@ -52,7 +52,7 @@ const EssentialOffersPreview = () => {
    return (
       <Wrapper>
          <h2>The essentials</h2>
-         <Button to={'essentials'} text={'view All'} btnStyle={{ isOutlined: true }} />
+         <Button to={'essentials'} text={'view All'} btnStyle={{ isOutlined: true, size: 'sm' }} />
          <StyledContainer>
             {essentialItems.map(({ title, price: { currentPrice, originalPrice }, status }: any, index) => {
                return (
@@ -67,14 +67,14 @@ const EssentialOffersPreview = () => {
                      }}
                      renderTitle={
                         () => <ImageTitleContainer>
-                           <span className='title'>{title}</span>
+                           <span>{title}</span>
                            {originalPrice ?
-                              <span>
+                              <small>
                                  <s>${originalPrice}</s>
                                  <span> from ${currentPrice}</span>
                                  <span className='obscure'> Save ${originalPrice - currentPrice}</span>
-                              </span> :
-                              <span>${currentPrice}</span>
+                              </small> :
+                              <small>${currentPrice}</small>
                            }
                            {status !== ProductStatus.NONE && <Label inverse={status === ProductStatus.SAVE}>{status}</Label>}
                         </ImageTitleContainer>
@@ -95,29 +95,22 @@ const Wrapper = styled.section`
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 2rem;
-
-   color: var(--bluishGreen-300);
 `
 
 const StyledContainer = styled.div`
+   padding-block: 3rem;
    display: flex;
    width: 100%;
    gap: 2rem;
 `
 
 const ImageTitleContainer = styled.div`
-   color: var(--bluishGreen-300);
-   font-size: var(--fs-400);
    text-align: center;
-   word-spacing: 4px;
+   word-spacing: var(--word-spacing-md);
+   font-size: var(--fs-400);
 
    & > * {
       display: block;
-   }
-
-   .title {
-      font-size: var(--fs-600);
    }
 
    .obscure {
@@ -126,10 +119,9 @@ const ImageTitleContainer = styled.div`
 
 `
 
-const Label = styled.div`
+const Label = styled.small`
    width: fit-content;
    padding: 0.2rem 0.5rem;
-   color: var(--bluishGreen-300);
    background-color: white;
    position: absolute;
    right: 0;

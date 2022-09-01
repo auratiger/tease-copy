@@ -15,19 +15,20 @@ const LabelSection = () => {
 
 const Wrapper = styled.section`
    width: 100%;
-   background-color: var(--bluishGreen-100);
    color: white;
-   padding: 15rem 25rem;
+   background-color: var(--bluishGreen-100);
+   padding: 15rem;
 
    ${flex({ dir: 'column', align: 'flex-end' })}
    gap: 1rem;
 
    & > h1 {
-      font-size: var(--fs-900);
+      font-size: var(--fs-800);
+      text-align: right;
    }
 
    & > span {
-      font-size: var(--fs-700);
+      font-size: var(--fs-500);
    }
 `
 

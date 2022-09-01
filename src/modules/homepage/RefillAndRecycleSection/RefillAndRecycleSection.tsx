@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-
-// import gif from '../../../assets/gifs/giphy.gif';
 import gif from '@src/assets/gifs/giphy.gif';
 
 const RefillAndRecycleSection = () => {
@@ -21,9 +19,9 @@ const Wrapper = styled.section`
    padding: 5rem 20rem;
 `
 
-const Title = styled.h1`
-   text-align: center;
-   font-size: 7rem;
+const Title = styled.h3`
+   color: var(--gray-300);
+   font-size: var(--fs-900);
    width: 10ch;
 `
 

@@ -22,7 +22,7 @@ const SpecialOfferSection = () => {
                   className='container'
                >
                   <span>For high (temperature) standards</span>
-                  <h1>the smart heated mug kit</h1>
+                  <h3>the smart heated mug kit</h3>
                   <LightGreenButton text={'Buy now'} />
                </ImageContainer>
             )
