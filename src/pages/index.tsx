@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { flex } from '@mixins/mixins';
 import { announcements } from '@constants/data/announcements';
-import { Announcement, App, HeaderWrapper } from '@common';
+import { Announcement, App, HeaderWrapper, Footer } from '@common';
 import {
    Hero, AssociateLogosSection, BenefitShopSection, SpecialOfferSection, EssentialOffersPreview,
    LabelSection, RefillSection, RefillAndRecycleSection, BiodegradableSection, ReviewsSection, BlendsBenefitSection, JournalSection,
@@ -37,6 +37,7 @@ const IndexPage = () => {
             <JournalSection />
             <OwnerSection />
          </Main>
+         <Footer />
       </App>
    );
 };

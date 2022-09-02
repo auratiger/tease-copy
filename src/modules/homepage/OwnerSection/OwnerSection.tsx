@@ -32,6 +32,7 @@ const OwnerSection = () => {
 
 const Wrapper = styled.section`
    width: 100%;
+   height: 500px;
    padding-inline: 5rem;
    margin: auto;
    display: flex;
