@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Navbar, Toolbar } from '@common';
 
-const HeaderWrapper = () => {
+const HeaderWrapper = ({ ...other }) => {
+
    return (
-      <Wrapper>
+      <Wrapper {...other}>
          <Toolbar />
          <Navbar />
       </Wrapper>
@@ -13,8 +14,6 @@ const HeaderWrapper = () => {
 
 const Wrapper = styled.header`
    width: 100%;
-   margin-inline: auto;
-   padding: 0 3rem;
    z-index: 20;
    position: absolute;
    color: white;

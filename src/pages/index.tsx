@@ -13,8 +13,8 @@ const IndexPage = () => {
    return (
       <App>
          <Announcement announcements={announcements} />
-         <HeaderWrapper />
-         <Main>
+         <HeaderWrapper className="wrapper" />
+         <Main className='wrapper'>
             <Hero />
             <Wellness>
                <h2>wellness rituals shouldn't be complicated.</h2>
@@ -37,31 +37,18 @@ const IndexPage = () => {
             <JournalSection />
             <OwnerSection />
          </Main>
-         <Footer />
+         <Footer className="wrapper" />
       </App>
    );
 };
 
 const Main = styled.main`
-   display: grid;
-   grid-template-columns:
-      1fr
-      min(70vw, 100%)
-      1fr;
    gap: 4rem;
 
    .img-container: {
       ${flex()}
    }
 
-   & > * {
-      grid-column: 2;
-   }
-
-   .full-bleed {
-      width: 100%;
-      grid-column: 1 / 4;
-   }
 `;
 
 

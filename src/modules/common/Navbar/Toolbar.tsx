@@ -18,9 +18,7 @@ const Toolbar = () => {
 };
 
 const Wrapper = styled.section`
-   max-width: 1500px;
    height: 2rem;
-   margin: auto;
    ${flex({ justify: "flex-end" })}
    gap: 0.5rem;
 

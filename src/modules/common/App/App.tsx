@@ -11,6 +11,8 @@ import './fonts.css';
 
 // TODO: extract all nested render functions in components
 
+// TODO: check for separation of concerns and remove redundancy
+
 const GlobalStyles = createGlobalStyle`
    :root {
 
@@ -86,6 +88,23 @@ const GlobalStyles = createGlobalStyle`
    p {
       font-family: var(--ff-base-primary);
       font-size: var(--fs-400);
+   }
+
+   .wrapper {
+      display: grid;
+      grid-template-columns:
+         1fr
+         min(70vw, 100%)
+         1fr;
+   }
+
+   .wrapper > * {
+      grid-column: 2;
+   }
+
+   .full-bleed {
+      width: 100%;
+      grid-column: 1 / 4;
    }
 `;
 

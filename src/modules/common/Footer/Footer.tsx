@@ -8,9 +8,9 @@ import { FaPinterest } from "@react-icons/all-files/fa/FaPinterest";
 import { SiTiktok } from "@react-icons/all-files/si/SiTiktok";
 import { Input } from '@common';
 
-const Footer = () => {
+const Footer = ({ ...other }) => {
    return (
-      <Wrapper>
+      <Wrapper {...other}>
          <FlexRowContainer>
             <LinksContainer>
                <span>affiliates & influencers</span>
@@ -51,21 +51,12 @@ const Wrapper = styled.footer`
    margin-block: auto;
    padding-block: 3rem;
    color: var(--gray-100);
+   gap: 2rem;
 
    span, p {
       font-size: var(--fs-300);
    }
 
-   display: grid;
-   grid-template-columns:
-      1fr
-      min(70vw, 100%)
-      1fr;
-
-   & > * {
-      grid-column: 2;
-   }
-   gap: 2rem;
 `
 
 const FlexRowContainer = styled.div`

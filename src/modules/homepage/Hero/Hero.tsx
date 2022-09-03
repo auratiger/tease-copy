@@ -111,7 +111,7 @@ const Hero = () => {
          return (
             <section key={index} className={`slide`}>
                <GatsbyImage image={image} className={'hero-image'} alt="hero" />
-               <AnimationCascade active={isActiveSlide} className="title-box">
+               <AnimationCascade active={isActiveSlide} className="wrapper title-box">
                   <h1>{item.title}</h1>
                   <h3>{item.description}</h3>
                   <BrownButton url={item.url} text={item.button.text} />
@@ -205,8 +205,8 @@ const Wrapper = styled.article`
       z-index: -1;
    }
 
-   .title-box {
-      ${flex({ dir: 'column', align: 'flex-start' })}
+   .title-box > * {
+      text-align: left;
    }
 `;
 

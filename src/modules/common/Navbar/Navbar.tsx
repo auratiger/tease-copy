@@ -67,9 +67,7 @@ const Wrapper = styled.nav`
 `;
 
 const StylysedContainer = styled.div`
-   max-width: 1500px;
    height: 100%;
-   margin: auto;
    ${flex()}
    gap: 2.5rem;
 `;
