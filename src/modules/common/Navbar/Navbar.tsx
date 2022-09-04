@@ -4,12 +4,12 @@ import { flex } from '@mixins/mixins';
 import { slideDown } from '@mixins/animations';
 import useScrollListener from '@hooks/useScrollListener';
 import links from '@constants/data/links';
-import { Link } from 'gatsby';
 
 import { BsSearch } from '@react-icons/all-files/bs/BsSearch';
 import { FaRegUser } from '@react-icons/all-files/fa/FaRegUser';
 import { BiShoppingBag } from '@react-icons/all-files/bi/BiShoppingBag';
 import { StaticImage } from 'gatsby-plugin-image';
+import NavLink from './Link';
 
 const Navbar = () => {
    const scroll = useScrollListener();
@@ -21,10 +21,14 @@ const Navbar = () => {
    }, [scroll.x, scroll.lastY]);
 
    const linkItems = () => {
-      return links.map((link: any, index: number) => {
+      return links.map(({ url, sublinks, text }: any, index: number) => {
          return (
             <li key={index}>
-               <Link to={link.url}>{link.text}</Link>
+               <NavLink to={url} renderMenu={
+                  () => sublinks && <Box>{sublinks?.map((sublink: string) => <span>{sublink}</span>)}</Box>
+               }>
+                  {text}
+               </NavLink>
             </li>
          );
       });
@@ -47,7 +51,6 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
    width: 100%;
-   height: 4rem;
    color: white;
 
    ${({ float }: any) =>
@@ -74,12 +77,7 @@ const StylysedContainer = styled.div`
 
 const Links = styled.ul`
    display: flex;
-   gap: 1.5rem;
-
-   & a {
-      text-decoration: none;
-      text-transform: capitalize;
-   }
+   font-size: var(--fs-400);
 `;
 
 const IconsList = styled.section`
@@ -87,5 +85,17 @@ const IconsList = styled.section`
    gap: 2rem;
    margin-left: auto;
 `;
+
+const Box = styled.div`
+   width: fit-content;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   padding: 1rem;
+   white-space: nowrap;
+   color: var(--bluishGreen-300);
+   background-color: var(--gray-100);
+   font-size: var(--fs-300);
+`
 
 export default Navbar;

@@ -17,6 +17,8 @@ const Wrapper = styled.header`
    z-index: 20;
    position: absolute;
    color: white;
+   display: grid;
+   gap: 2rem;
 `;
 
 export default HeaderWrapper;
