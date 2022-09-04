@@ -13,7 +13,7 @@ const IndexPage = () => {
    return (
       <App>
          <Announcement announcements={announcements} />
-         <HeaderWrapper className="wrapper" />
+         <HeaderWrapper />
          <Main className='wrapper'>
             <Hero />
             <Wellness>
@@ -37,7 +37,7 @@ const IndexPage = () => {
             <JournalSection />
             <OwnerSection />
          </Main>
-         <Footer className="wrapper" />
+         <Footer />
       </App>
    );
 };

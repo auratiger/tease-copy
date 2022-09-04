@@ -22,7 +22,7 @@ const Navbar = () => {
    return (
       <Wrapper float={float}>
          <StylysedContainer>
-            <StaticImage src="../../../assets/images/tease-logo.webp" alt="logo" />
+            <StaticImage src="../../../assets/images/tease-logo.webp" alt="logo" className='img' />
             <LinksContainer role={'list'} />
             <IconsList>
                <FaRegUser size={24} />
@@ -37,6 +37,10 @@ const Navbar = () => {
 const Wrapper = styled.nav`
    width: 100%;
    color: white;
+
+   .img {
+      min-width: fit-content;
+   }
 
    ${({ float }: any) =>
       float &&
@@ -61,6 +65,7 @@ const StylysedContainer = styled.div`
 `;
 
 const IconsList = styled.section`
+   min-width: fit-content;
    display: flex;
    gap: 2rem;
    margin-left: auto;

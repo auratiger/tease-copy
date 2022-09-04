@@ -5,7 +5,7 @@ import { Navbar, Toolbar } from '@common';
 const HeaderWrapper = ({ ...other }) => {
 
    return (
-      <Wrapper {...other}>
+      <Wrapper className="wrapper"  {...other}>
          <Toolbar />
          <Navbar />
       </Wrapper>

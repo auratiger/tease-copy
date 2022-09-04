@@ -193,7 +193,7 @@ const Wrapper = styled.article`
    .slide {
       ${fillContainer}
       flex: none;
-      padding: 8rem 3rem;
+      padding-block: 10rem;
       color: white;
       position: relative;
    }

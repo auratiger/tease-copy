@@ -7,11 +7,13 @@ const LinkItems = () => {
    return links.map(({ url, sublinks, text }: any, index: number) => {
       return (
          <li key={index}>
-            <NavLink to={url} renderMenu={
-               () => sublinks && <Box>{sublinks?.map((sublink: string) => <span>{sublink}</span>)}</Box>
-            }>
-               {text}
-            </NavLink>
+            <NavLink
+               text={text}
+               to={url}
+               renderMenu={() =>
+                  sublinks &&
+                  <Box>{sublinks?.map((sublink: string) => <span>{sublink}</span>)}</Box>}
+            />
          </li>
       );
    });
@@ -28,6 +30,8 @@ const LinksContainer = ({ ...other }) => {
 
 const Links = styled.ul`
    display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
    font-size: var(--fs-400);
 `;
 

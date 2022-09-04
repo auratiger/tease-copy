@@ -10,7 +10,7 @@ import { Input } from '@common';
 
 const Footer = ({ ...other }) => {
    return (
-      <Wrapper {...other}>
+      <Wrapper className="wrapper" {...other}>
          <FlexRowContainer>
             <LinksContainer>
                <span>affiliates & influencers</span>
