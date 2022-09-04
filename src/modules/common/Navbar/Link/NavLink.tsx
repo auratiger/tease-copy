@@ -8,13 +8,14 @@ export interface NavLinkProps extends GatsbyLinkProps<any> {
    children: any
 }
 
+//TODO: research how to make the submenu items selectable with keyboard
 const NavLink: FC<NavLinkProps> = ({ renderMenu, children, ...other }) => {
    const Submenu = renderMenu?.();
 
    return (
-      <LinkWrapper {...other} hasSubmenu={!!Submenu}>
+      <LinkWrapper tabindex={0} {...other} hasSubmenu={!!Submenu}>
          {children}
-         <Underscore />
+         <Underscore aria-hidden={true} />
 
          <FloatMenuContainer>
             {Submenu}
@@ -35,9 +36,11 @@ const LinkWrapper = styled(Link)`
    ${({ hasSubmenu }: any) =>
       hasSubmenu &&
       css`
-         &:hover {
+         &:hover,
+         &:focus-visible {
             color: var(--bluishGreen-300);
             background-color: var(--gray-100);
+            outline: none;
          }
       `
    }
@@ -53,7 +56,8 @@ const Underscore = styled.div`
    boorder-radius: 50%;
    background-color: var(--bluishGreen-300);
 
-   ${LinkWrapper}:hover & {
+   ${LinkWrapper}:hover &,
+   ${LinkWrapper}:focus-visible & {
       animation-name: ${timelineLoader};
       animation-duration: 1s;
       animation-fill-mode: both;
@@ -67,7 +71,8 @@ const FloatMenuContainer = styled.div`
    z-index: 999;
    display: none;
 
-   ${LinkWrapper}:hover & {
+   ${LinkWrapper}:hover &,
+   ${LinkWrapper}:focus-visible & {
       display: block;
    }
 `
