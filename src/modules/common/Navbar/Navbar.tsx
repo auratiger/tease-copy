@@ -37,6 +37,7 @@ const Navbar = () => {
 const Wrapper = styled.nav`
    width: 100%;
    color: white;
+   ${flex()}
 
    .img {
       min-width: fit-content;
@@ -59,6 +60,7 @@ const Wrapper = styled.nav`
 `;
 
 const StylysedContainer = styled.div`
+   width: var(--content-width);
    height: 100%;
    ${flex()}
    gap: 2.5rem;

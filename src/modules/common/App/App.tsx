@@ -56,6 +56,8 @@ const GlobalStyles = createGlobalStyle`
       --lh-large: 1.6;
       --radius: 0.25rem;
 
+      --content-width: min(70vw, 100%);
+
       --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
@@ -94,7 +96,7 @@ const GlobalStyles = createGlobalStyle`
       display: grid;
       grid-template-columns:
          1fr
-         min(70vw, 100%)
+         var(--content-width)
          1fr;
    }
 
