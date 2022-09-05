@@ -5,7 +5,7 @@ import { timelineLoader } from '@mixins/animations';
 
 export interface NavLinkProps extends GatsbyLinkProps<any> {
    text: string;
-   renderMenu?: () => ReactElement,
+   renderMenu?: () => ReactElement | undefined | null,
 }
 
 //TODO: research how to make the submenu items selectable with keyboard
@@ -70,14 +70,13 @@ const Underscore = styled.div`
 const FloatMenuContainer = styled.div`
    width: fit-content;
    position: absolute;
-   background-color: white;
    top: 100%;
    z-index: 999;
    display: none;
 
    ${LinkWrapper}:hover &,
    ${LinkWrapper}:focus-visible & {
-      display: block;
+      display: flex;
    }
 `
 

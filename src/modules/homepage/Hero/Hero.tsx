@@ -176,7 +176,7 @@ const TimelineContainer = styled.div`
 
 const Wrapper = styled.article`
    width: 100%;
-   height: 40rem;
+   height: 60vh;
    position: relative;
    overflow-x: hidden;
    ${flex()};

@@ -23,7 +23,7 @@ const Navbar = () => {
       <Wrapper float={float}>
          <StylysedContainer>
             <StaticImage src="../../../assets/images/tease-logo.webp" alt="logo" className='img' />
-            <LinksContainer role={'list'} />
+            <LinksContainer />
             <IconsList>
                <FaRegUser size={24} />
                <BsSearch size={24} />

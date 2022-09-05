@@ -2,31 +2,88 @@ const data = [
    {
       text: "shop",
       url: "/",
+      submenu: {
+         links: [
+            'blends',
+            'refills',
+            'kits',
+            'matcha',
+            'accesories',
+            'gift card',
+         ],
+         sections: [
+            {
+               title: 'blends',
+               links: [
+                  'organic',
+                  'adaptogens',
+                  'caffeine free',
+                  'seasonal',
+                  'all blends',
+                  'refills'
+               ]
+            },
+            {
+               title: 'benefit',
+               links: [
+                  'sleep',
+                  'calm',
+                  'focus',
+                  'immunity',
+                  'energy',
+                  'pms relief'
+               ]
+            },
+            {
+               title: 'beauty',
+               links: [
+                  'clarifying matcha mask',
+                  'exfoliating earl grey scrub',
+                  'soothing chamomile soak',
+                  'cleansing facial konjac sponge (new!)',
+                  'all beauty',
+               ]
+            },
+            {
+               title: 'accesories',
+               links: [
+                  'smart travel tumbler (new!)',
+                  'smart heated mug kit',
+                  '3-in-1 tumbler',
+                  'all accesories',
+               ]
+            },
+         ]
+      }
    },
    {
       text: "kits",
       url: "/about/",
-      sublinks: [
-         'the essensials kit',
-         'the organics kit',
-         'the first aid kit',
-         'the chill kit',
-         'the period kit',
-         'the cozy kit',
-         'the smart heated mug kit',
-         'all kits',
-      ]
+      submenu: {
+         links: [
+            'the essensials kit',
+            'the organics kit',
+            'the first aid kit',
+            'the chill kit',
+            'the period kit',
+            'the cozy kit',
+            'the smart heated mug kit',
+            'all kits',
+         ],
+      }
    },
    {
       text: "beauty",
       url: "/projects/",
-      sublinks: [
-         'clarifying matcha mask',
-         'exfoliating earl gray scrub',
-         'soothing chamomile soa',
-         'cleansing facial konjac sponges',
-         'all beauty',
-      ]
+      submenu: {
+         links: [
+            'clarifying matcha mask',
+            'exfoliating earl gray scrub',
+            'soothing chamomile soa',
+            'cleansing facial konjac sponges',
+            'all beauty',
+         ]
+      }
    },
    {
       text: "refills",
@@ -39,22 +96,26 @@ const data = [
    {
       text: "benefits club",
       url: "/contact/",
-      sublinks: [
-         'get $20 for singing up!',
-         'affiliates & influencers',
-      ]
+      submenu: {
+         links: [
+            'get $20 for singing up!',
+            'affiliates & influencers',
+         ]
+      }
    },
    {
       text: "about",
       url: "/contact/",
-      sublinks: [
-         'about tease',
-         'b-corp',
-         'investing in women',
-         'contact',
-         'stockists',
-         'wholesale',
-      ]
+      submenu: {
+         links: [
+            'about tease',
+            'b-corp',
+            'investing in women',
+            'contact',
+            'stockists',
+            'wholesale',
+         ]
+      }
    },
 ];
 
