@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import links from '@constants/data/links';
 import NavLink from './Link';
 
 const renderSubmenuElement = (submenu: any) => {
@@ -27,7 +26,7 @@ const renderSubmenuElement = (submenu: any) => {
    </Box>
 }
 
-const LinkItems = () => {
+const LinkItems = ({ links }: any) => {
    return links.map(({ url, submenu, text }: any, index: number) => {
       return (
          <li key={index}>
@@ -42,15 +41,17 @@ const LinkItems = () => {
 };
 
 
-const LinksContainer = ({ ...other }) => {
+const LinksContainer = ({ links, ...other }: any) => {
    return (
-      <Links role={'list'} {...other}>
-         <LinkItems />
+      <Links {...other}>
+         <LinkItems links={links} />
       </Links>
    )
 }
 
-const Links = styled.ul`
+const Links = styled.ul.attrs({
+   role: 'list'
+})`
    display: flex;
    flex-wrap: wrap;
    gap: 1rem;

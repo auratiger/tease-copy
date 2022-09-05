@@ -6,3 +6,5 @@ export * from './ImageContainer';
 export * from './Navbar';
 export * from './Footer';
 export * from './Input';
+export * from './Icons/XIcon';
+export * from './Icons/BurgerIcon';

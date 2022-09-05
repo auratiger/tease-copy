@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
       --bluishGreen-100: #88a693;
       --bluishGreen-200: #1f452a;
       --bluishGreen-300: #1d432b;
+      --bluishGreen-400: #d9e4dd;
 
       --gray-100: #ffffff;
       --gray-200: #f9f9f9;

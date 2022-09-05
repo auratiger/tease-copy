@@ -16,7 +16,7 @@ const Wrapper = styled.header`
    width: 100%;
    z-index: 20;
    position: absolute;
-   color: white;
+   color: var(--gray-100);
    display: grid;
    gap: 2rem;
 `;
