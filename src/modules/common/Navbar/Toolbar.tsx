@@ -9,7 +9,7 @@ import { SiTiktok } from "@react-icons/all-files/si/SiTiktok";
 const Toolbar = () => {
    return (
       <Wrapper>
-         <FiInstagram size={18} />
+         <FiInstagram />
          <FaFacebookF />
          <FaPinterest />
          <SiTiktok />

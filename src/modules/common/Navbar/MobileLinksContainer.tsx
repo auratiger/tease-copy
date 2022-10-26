@@ -65,9 +65,10 @@ const LinksList = styled.ul.attrs({
 
 const EmptyRow = styled.div`
    width: 100%;
+   display: flex;
+   justify-content: flex-end;
 
-   svg {
-      margin-left: auto;
+   button {
       width: 50px;
       color: var(--bluishGreen-300);
    }
